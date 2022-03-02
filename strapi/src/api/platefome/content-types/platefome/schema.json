@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "platefomes",
+  "info": {
+    "singularName": "platefome",
+    "pluralName": "platefomes",
+    "displayName": "Plateforme",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nom": {
+      "type": "string"
+    },
+    "icone": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

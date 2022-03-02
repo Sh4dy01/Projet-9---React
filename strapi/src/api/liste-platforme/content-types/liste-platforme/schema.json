@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "liste_platformes",
+  "info": {
+    "singularName": "liste-platforme",
+    "pluralName": "liste-platformes",
+    "displayName": "Liste_plateformes",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "ID_platefrome": {
+      "type": "biginteger"
+    },
+    "ID_jeu": {
+      "type": "biginteger"
+    }
+  }
+}
