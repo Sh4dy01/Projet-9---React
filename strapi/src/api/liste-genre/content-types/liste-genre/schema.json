@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "liste_genres",
+  "info": {
+    "singularName": "liste-genre",
+    "pluralName": "liste-genres",
+    "displayName": "liste_genres",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "ID_jeu": {
+      "type": "biginteger"
+    },
+    "ID_genre": {
+      "type": "biginteger"
+    }
+  }
+}
