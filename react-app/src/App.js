@@ -1,14 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import {
   BrowserRouter as Router,
   Route,
   Routes
 } from 'react-router-dom';
-import Home from './Routes/Home';
-import Game from './Routes/Game';
-import Cart from './Routes/Cart';
-import User from './Routes/User';
+
+import Home from './routes/Home';
+import Game from './routes/Game';
+import Cart from './routes/Cart';
+import User from './routes/User';
 
 function App() {
   return (
