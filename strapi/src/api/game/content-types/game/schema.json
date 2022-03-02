@@ -61,10 +61,16 @@
       "target": "api::genre.genre",
       "inversedBy": "games"
     },
-    "plateforms": {
+    "platforms": {
       "type": "relation",
       "relation": "manyToMany",
-      "target": "api::plateform.plateform",
+      "target": "api::platform.platform",
+      "inversedBy": "games"
+    },
+    "developer": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::developer.developer",
       "inversedBy": "games"
     }
   }

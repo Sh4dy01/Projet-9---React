@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- *  plateform controller
+ *  platform controller
  */
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::plateform.plateform');
+module.exports = createCoreController('api::platform.platform');

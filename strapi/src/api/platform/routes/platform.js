@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * plateform router.
+ * platform router.
  */
 
 const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = createCoreRouter('api::plateform.plateform');
+module.exports = createCoreRouter('api::platform.platform');

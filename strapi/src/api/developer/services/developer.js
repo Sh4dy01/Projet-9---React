@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * plateform service.
+ * developer service.
  */
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('api::plateform.plateform');
+module.exports = createCoreService('api::developer.developer');
