@@ -79,7 +79,6 @@ $RECYCLE.BIN/
 ssl
 .idea
 nbproject
-public/uploads/*
 database
 .editorconfig
 .env.example
