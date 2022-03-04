@@ -19,7 +19,7 @@ class Home extends Component {
         <Container>
           <Row>
           {this.props.gameArticles.data && this.props.gameArticles.data.map((gameArticles, i)=>
-          <Col xs={4} key={i}><GameArticle gameArticles={this.props.gameArticles.data[i]}/></Col>)}
+          <Col xs={4} key={i}><GameArticle platforms={this.props.platforms}  gameArticles={this.props.gameArticles.data[i]}/></Col>)}
           </Row>
         </Container>
       </div>

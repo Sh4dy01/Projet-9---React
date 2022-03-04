@@ -17,7 +17,8 @@ class App extends Component{
   constructor(props){
     super(props)
     this.state={
-       gameArticles:[]
+       gameArticles:[],
+       platforms:[]
     }
   }
   componentDidMount = async () => {
@@ -30,7 +31,7 @@ class App extends Component{
     return (
       <Router>
         <Routes>
-          <Route exact path='/' element={<Home gameArticles={this.state.gameArticles} />} />
+          <Route exact path='/' element={<Home platforms={this.state.platforms} gameArticles={this.state.gameArticles} />} />
           <Route exact path='/game' element={<Game gameArticles={this.state.gameArticles} />} />
           <Route exact path='/cart' element={<Cart />} />
           <Route exact path='/user' element={<User />} />
