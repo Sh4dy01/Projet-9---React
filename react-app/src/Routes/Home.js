@@ -4,8 +4,8 @@ import GameArticle from '../components/GameArticle';
 import {Container, Row, Col} from 'react-bootstrap';
 
 class Home extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
 
     }

@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
-import GameArticle from '../components/GameArticle';
 
 class Game extends Component {
-  render() {
-    return (
-      <GameArticle></GameArticle>
-    );
+
+  constructor(props){
+    super(props)
   }
-}
+
+  render(){
+    return (
+      <>
+      {this.props.gameArticles.data && this.props.gameArticles.data.map((gameArticles, i)=><div key={i}>{gameArticles.attributes.title}</div>)}
+      </>
+      );
+    }
+  }
+
 
 export default Game;

@@ -11,18 +11,33 @@ import Home from './routes/Home';
 import Game from './routes/Game';
 import Cart from './routes/Cart';
 import User from './routes/User';
+import { Component } from 'react';
 
-function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route exact path='/' element={<Home name1="Hugo" name2="Guilian" />} />
-        <Route exact path='/game' element={<Game />} />
-        <Route exact path='/cart' element={<Cart />} />
-        <Route exact path='/user' element={<User />} />
-      </Routes>
-    </Router>
-  );
+class App extends Component{
+  constructor(props){
+    super(props)
+    this.state={
+       gameArticles:[]
+    }
+  }
+  componentDidMount = async () => {
+    const response = await fetch('http://localhost:1337/api/games?populate=*', {method: 'GET', headers: {'Accept': 'application/json', 'Content-Type':'application/json'}})
+    const gameArticles = await response.json()
+    this.setState({gameArticles:gameArticles},()=>console.log(this.state.gameArticles))
+  }
+
+  render() {
+    return (
+      <Router>
+        <Routes>
+          <Route exact path='/' element={<Home />} />
+          <Route exact path='/game' element={<Game gameArticles={this.state.gameArticles} />} />
+          <Route exact path='/cart' element={<Cart />} />
+          <Route exact path='/user' element={<User />} />
+        </Routes>
+      </Router>
+    );
+  }
 }
 
 export default App;
