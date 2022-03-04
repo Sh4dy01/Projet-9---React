@@ -12,13 +12,12 @@ class Menu extends Component {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                         <NavDropdown title="Genres" id="basic-nav-dropdown">
-
                             {/* map pour tous les genres */}
                             <NavDropdown.Item><Link to="/">INDE-STORE</Link></NavDropdown.Item>
 
                         </NavDropdown>
                         <Link to="/games">Jeux</Link>
-                        <Link to="/about-us">A propos de nous</Link>
+                        <Link to="/about-us" className="d-flex">A propos de nous</Link>
                     </Nav>
                     <Form className="d-flex">
                         <FormControl
