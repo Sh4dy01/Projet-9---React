@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import {Card, Button, Row, Col} from 'react-bootstrap';
 
 class GameArticle extends Component {
-    constructor() {
-      super();
+    constructor(props) {
+      super(props);
       this.state = {
         mouseHover:false
       }
@@ -15,9 +15,9 @@ class GameArticle extends Component {
     render(){
     return (
         <Card>
-            <Card.Img className="fluid" variant="top" src="/fb_image.png" />
+            <Card.Img className="fluid" variant="top" src={this.props.gameArticles && "http://localhost:1337"+this.props.gameArticles.attributes.cover.data.attributes.formats.medium.url} />
             <Card.Body>
-                <Card.Title className="text-center">Titre du jeu</Card.Title>
+                <Card.Title className="text-center">{this.props.gameArticles && this.props.gameArticles.attributes.title}</Card.Title>
             </Card.Body>
             <Card.Footer>
                 <Row>

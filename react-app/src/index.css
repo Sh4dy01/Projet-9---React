@@ -12,10 +12,6 @@ code {
     monospace;
 }
 
-.card {
-  width: 25%
-}
-
 .card .card-footer button {
   cursor: pointer;
   float: right;

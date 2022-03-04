@@ -13,14 +13,17 @@ class Home extends Component {
 
   render() {
     return (
+      <>
       <div>
         <Menu></Menu>
         <Container>
           <Row>
-            <Col><GameArticle></GameArticle></Col>
+          {this.props.gameArticles.data && this.props.gameArticles.data.map((gameArticles, i)=>
+          <Col xs={4} key={i}><GameArticle gameArticles={this.props.gameArticles.data[i]}/></Col>)}
           </Row>
         </Container>
       </div>
+      </>
     );
   }
 }
