@@ -21,7 +21,7 @@ class GameArticle extends Component {
             </Card.Body>
             <Card.Footer>
                 <Row>
-                {this.props.gameArticles &&
+                {/*this.props.gameArticles &&
                  this.props.gameArticles.attributes.platforms.data.id.map((id, i)=>
                 <Col key={i}>
                     <img src={this.props.platforms.data.map((y)=>
@@ -29,7 +29,7 @@ class GameArticle extends Component {
                         "http://localhost:1337"+this.props.platforms.data.icon.data.attributes.formats.small.url
                     }
                 )}/>
-                </Col>)}
+                </Col>)*/}
                 <Col><Button sier ="sm" variant="outline-success" onMouseOver={()=>this.mouseHoverTrue()} onMouseLeave={()=>this.mouseHoverFalse()}>{this.state.mouseHover ? "Ajouter" : "Prix"}</Button></Col>
                 </Row>
             </Card.Footer>
