@@ -1,25 +1,34 @@
 import React, { Component } from 'react';
-import { Nav, Navbar, Container, NavDropdown } from 'react-bootstrap';
+import { Nav, Navbar, Container, Button, NavDropdown, Form, FormControl } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 class Menu extends Component {
   render() {
     return (
-        <Navbar bg="light" expand="lg">
+        <Navbar bg="dark" expand="lg" sticky="top">
             <Container>
-                <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+                <Navbar.Brand><Link to="/">INDE-STORE</Link></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Link to="#home">Home</Link>
-                        <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                        <NavDropdown title="Genres" id="basic-nav-dropdown">
+
+                            {/* map pour tous les genres */}
+                            <NavDropdown.Item><Link to="/">INDE-STORE</Link></NavDropdown.Item>
+
                         </NavDropdown>
+                        <Link to="/games">Jeux</Link>
+                        <Link to="/about-us">A propos de nous</Link>
                     </Nav>
+                    <Form className="d-flex">
+                        <FormControl
+                            type="search"
+                            placeholder="Search"
+                            className="me-2"
+                            aria-label="Search"
+                        />
+                        <Button variant="outline-success">Search</Button>
+                    </Form>
                 </Navbar.Collapse>
             </Container>
         </Navbar>
