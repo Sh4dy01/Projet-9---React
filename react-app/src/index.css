@@ -25,9 +25,6 @@ code {
   padding: 6px;
 }
 
-.navbar .navbar-collapse{
-  vertical-align: middle;
-}
 
 #basic-nav-dropdown{
   color: white;
@@ -40,12 +37,11 @@ code {
 .navbar a{
   text-decoration: none;
   color: white;
-  vertical-align: middle;
-  text-align: center;
+  text-align: left;
   padding: 0 15px;
   margin: auto;
 }
 
-.navbar-brand a {
-  color: orangered;
+.navbar-brand {
+  color: orange;
 }

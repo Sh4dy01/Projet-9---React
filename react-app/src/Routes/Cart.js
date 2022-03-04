@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import Menu from '../components/Menu';
 
 class Cart extends Component {
   render() {
     return (
       <div>
-        <p>Voici votre panier</p>
+        <Menu/>
+        <h2>PANIER</h2>
       </div>
     );
   }
