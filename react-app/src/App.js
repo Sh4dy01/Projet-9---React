@@ -25,9 +25,6 @@ class App extends Component{
     const response = await fetch('http://localhost:1337/api/games?populate=*', {method: 'GET', headers: {'Accept': 'application/json', 'Content-Type':'application/json'}})
     const gameArticles = await response.json()
     this.setState({gameArticles:gameArticles})
-    const response = await fetch('http://localhost:1337/api/platforms?populate=*', {method: 'GET', headers: {'Accept': 'application/json', 'Content-Type':'application/json'}})
-    const platforms = await response.json()
-    this.setState({platforms:platforms})
   }
 
   render() {
