@@ -23,14 +23,14 @@ class App extends Component{
   componentDidMount = async () => {
     const response = await fetch('http://localhost:1337/api/games?populate=*', {method: 'GET', headers: {'Accept': 'application/json', 'Content-Type':'application/json'}})
     const gameArticles = await response.json()
-    this.setState({gameArticles:gameArticles},()=>console.log(this.state.gameArticles))
+    this.setState({gameArticles:gameArticles})
   }
 
   render() {
     return (
       <Router>
         <Routes>
-          <Route exact path='/' element={<Home />} />
+          <Route exact path='/' element={<Home gameArticles={this.state.gameArticles} />} />
           <Route exact path='/game' element={<Game gameArticles={this.state.gameArticles} />} />
           <Route exact path='/cart' element={<Cart />} />
           <Route exact path='/user' element={<User />} />

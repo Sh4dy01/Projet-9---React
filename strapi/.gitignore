@@ -81,7 +81,6 @@ ssl
 nbproject
 public/uploads/*
 database
-public
 .editorconfig
 .env.example
 config
