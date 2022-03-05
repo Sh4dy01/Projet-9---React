@@ -15,16 +15,16 @@ class Home extends Component {
   render() {
     return (
       <>
-      <div>
-        <Menu gameGenres={this.props.gameGenres}></Menu>
-        <Container>
-          <Row>
-          {this.props.gameArticles.data && this.props.gameArticles.data.map((gameArticles, i)=>
-          <Col xs={4} key={i}><GameArticle gamePlatforms={this.props.gamePlatforms}  gameArticle={this.props.gameArticles.data[i]}/></Col>)}
-          </Row>
-        </Container>
-        <FooterComposant/>
-      </div>
+        <div>
+          <Menu gameGenres={this.props.gameGenres}></Menu>
+          <Container className="shadow p-3 bg-body">
+            <Row>
+            {this.props.gameArticles.data && this.props.gameArticles.data.map((gameArticles, i)=>
+            <Col xs={4} key={i}><GameArticle gamePlatforms={this.props.gamePlatforms}  gameArticle={this.props.gameArticles.data[i]}/></Col>)}
+            </Row>
+          </Container>
+          <FooterComposant/>
+        </div>
       </>
     );
   }

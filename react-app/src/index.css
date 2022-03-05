@@ -25,10 +25,17 @@ h1, h2, h3, h4, span{
   height: 28px;
   width: 65px;
   text-align: center;
+  padding: 6px 0;
   font-size: 13px;
-  padding: 6px;
 }
 
+.card img{
+  box-shadow: inset 0 0 100px black;
+}
+
+.card img:hover{
+  box-shadow: none;
+}
 
 .navbar{
   margin-bottom: 15px;

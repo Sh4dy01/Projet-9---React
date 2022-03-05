@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 
 function FooterComposant(){
     return(
-        <Container>
-            <footer class="py-8 my-8 border-top">
+        <Container className="py-8 my-8 shadow p-3 bg-body border-top">
+            <footer>
                 <Row>
                     <Col class="col-3">
                         <h5>À PROPOS DE</h5>
@@ -44,7 +44,7 @@ function FooterComposant(){
                     </Col>
                 </Row>
 
-                <div class="d-flex justify-content-between py-4 my-4 border-top">
+                <div class="d-flex justify-content-between py-4 border-top">
                     <p>© 2021 Company, Inc. Tout droits réservés.</p>
                 </div>
             </footer>
