@@ -15,13 +15,11 @@ class GameArticle extends Component {
 
     render(){
     return (
-        <Card>
+        <Card className="shadow-sm p-3 mb-5 bg-body"> 
             <Link to={"/Game?ID="+this.props.gameArticle.id}>
             <Card.Img className="fluid" variant="top" src={this.props.gameArticle && "http://localhost:1337"+this.props.gameArticle.attributes.cover.data.attributes.formats.medium.url} />
             </Link>
-            <Card.Body>
-                <Card.Title className="text-center">{this.props.gameArticle && this.props.gameArticle.attributes.title}</Card.Title>
-            </Card.Body>
+            <Card.Title className="text-center">{this.props.gameArticle && this.props.gameArticle.attributes.title}</Card.Title>
             <Card.Footer>
                 <Row>
                 {/*<img src={this.props.gameArticle && this.props.gamePlatforms.data && this.props.gamePlatforms.data.map((i)=> this.props.gamePlatforms.data[i].id == this.props.gameArticle.id && "http://localhost:1337"+this.props.gamePlatforms.data.attributes.icon.data.attributes.formats.small.url)} />*/}
