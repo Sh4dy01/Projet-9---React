@@ -26,7 +26,6 @@ class Cart extends Component {
         <Container className='bg-dark'>
           <h2 className='text-center'>PANIER</h2>
           <Container>
-
             {this.state.gameArticlesInTheCart.data && this.state.gameArticlesInTheCart.data.map((gameArticle, i)=>
               <GameCart key={i} gameArticle={gameArticle}></GameCart>)}
           </Container>

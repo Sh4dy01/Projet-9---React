@@ -1,5 +1,6 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Component } from 'react';
 
 import {
   BrowserRouter as Router,
@@ -11,7 +12,7 @@ import Home from './routes/Home';
 import Game from './routes/Game';
 import Cart from './routes/Cart';
 import User from './routes/User';
-import { Component } from 'react';
+import AboutUs from './routes/About-us';
 
 class App extends Component{
   constructor(props){
@@ -45,6 +46,7 @@ class App extends Component{
           <Route exact path='/' element={<Home gamePlatforms={this.state.gamePlatforms} gameArticles={this.state.gameArticles} gameGenres={this.state.gameGenres.data}/>} />
           <Route exact path='/game' element={<Game gameArticles={this.state.gameArticles} gameGenres={this.state.gameGenres.data}/>} />
           <Route exact path='/cart' element={<Cart gameGenres={this.state.gameGenres.data}/>} />
+          <Route exact path='/about-us' element={<AboutUs />} />
           <Route exact path='/user' element={<User />} />
         </Routes>
       </Router>

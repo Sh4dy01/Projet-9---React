@@ -14,7 +14,7 @@ class Home extends Component {
 
   render() {
     return (
-      <>
+      <div>
         <Menu gameGenres={this.props.gameGenres}></Menu>
         <Row>
           <Col xs={2}>
@@ -33,23 +33,23 @@ class Home extends Component {
                 <div className="d-grid gap-2">
                   <Button variant="primary" type="submit" className='mx-auto'>Appliquer les filtres</Button>
                 </div>
-             </Form>
+              </Form>
             </div>
           </Col>
           <Col xs={10}>
+            <div className="shadow p-3 bg-body me-5">
               <Row>
-                <Col className="shadow p-3 bg-body">
-                  <Row>
-                    {this.props.gameArticles.data && this.props.gameArticles.data.map((gameArticle, i)=>
-                      <Col xs={4} key={i}><GameArticle gamePlatforms={this.props.gamePlatforms}  gameArticle={gameArticle}/></Col>
-                    )}
-                  </Row>
-                </Col>
+                {this.props.gameArticles.data && this.props.gameArticles.data.map((gameArticle, i)=>
+                  <Col xs={4} key={i}>
+                    <GameArticle gamePlatforms={this.props.gamePlatforms}  gameArticle={gameArticle}/>
+                  </Col>
+                )}
               </Row>
+            </div>
           </Col>
         </Row>
         <FooterComposant/>
-      </>
+      </div>
     );
   }
 }

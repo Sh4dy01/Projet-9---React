@@ -19,9 +19,9 @@ class Menu extends Component {
     render() {
         console.log(this.props.gameGenres)
         return (
-            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="sticky-top">
                 <Container>
-                    <Navbar.Brand><Link to="/"><h1>INDE-STORE</h1></Link></Navbar.Brand>
+                    <h1><Link to='/'>INDE-STORE</Link></h1>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">

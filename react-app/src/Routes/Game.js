@@ -22,22 +22,22 @@ class Game extends Component {
 
   render(){
     return (
-      <>
-      <Menu/>
-      <Container>
-        <h1 id='title' className='text-center'>{this.state.game.data && this.state.game.data.attributes.title}</h1>
-        <Carousel>
-          {this.state.game.data && this.state.game.data.attributes.media.data.map((caca,i)=>
-            <CarouselItem>
-              {/*<img
-                src={this.state.game.data.attributes.media[i].data.attributes.url && "http://localhost:1337"+this.state.game.data.attributes.media.data[i].attributes.url,
-                this.state.game.data.attributes.media[i].data.attributes.formats.medium.url && "http://localhost:1337"+this.state.game.data.attributes.media.data[i].attributes.formats.medium.url}
-              />*/}
-            </CarouselItem>
-          )}
-        </Carousel>
-      </Container>
-      </>
+      <div>
+        <Menu/>
+        <Container>
+          <h1 id='title' className='text-center'>{this.state.game.data && this.state.game.data.attributes.title}</h1>
+          <Carousel>
+            {this.state.game.data && this.state.game.data.attributes.media.data.map((caca,i)=>
+              <CarouselItem key={i}>
+                {/*<img
+                  src={this.state.game.data.attributes.media[i].data.attributes.url && "http://localhost:1337"+this.state.game.data.attributes.media.data[i].attributes.url,
+                  this.state.game.data.attributes.media[i].data.attributes.formats.medium.url && "http://localhost:1337"+this.state.game.data.attributes.media.data[i].attributes.formats.medium.url}
+                />*/}
+              </CarouselItem>
+            )}
+          </Carousel>
+        </Container>
+      </div>
       );
     }
   }

@@ -7,7 +7,7 @@ function FooterComposant(){
         <footer className="py-8 my-8 shadow p-3 bg-body border-top">
             <Container>
                 <Row>
-                    <Col class="col-3">
+                    <Col className="col-3">
                         <h5>À PROPOS DE</h5>
                         <ListGroup variant="flush">
                             <ListGroup.Item>Développeur</ListGroup.Item>
@@ -15,7 +15,7 @@ function FooterComposant(){
                         </ListGroup>
                     </Col>
 
-                    <Col class="col-5">
+                    <Col className="col-5">
                         <h5>MEILLEURES VENTES</h5>
                         <ListGroup variant="flush">
                             {/* Map sur 5 jeux les plus vendus*/}
@@ -41,7 +41,7 @@ function FooterComposant(){
                         </Form>
                     </Col>
                 </Row>
-                <div class="d-flex justify-content-between py-4 border-top">
+                <div className="d-flex justify-content-between py-4 border-top">
                     <p>© 2022 Company, Inc. Tout droits réservés.</p>
                 </div>
             </Container>
