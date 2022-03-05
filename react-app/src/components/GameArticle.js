@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Card, Button, Row, Col} from 'react-bootstrap';
+import {Link} from 'react-router-dom'
 
 class GameArticle extends Component {
     constructor(props) {
@@ -13,10 +14,11 @@ class GameArticle extends Component {
     mouseHoverFalse = () => this.setState({mouseHover:false})
 
     render(){
-        console.log(this.props.gamePlatforms);
     return (
         <Card>
+            <Link to={"/Game?ID="+this.props.gameArticle.id}>
             <Card.Img className="fluid" variant="top" src={this.props.gameArticle && "http://localhost:1337"+this.props.gameArticle.attributes.cover.data.attributes.formats.medium.url} />
+            </Link>
             <Card.Body>
                 <Card.Title className="text-center">{this.props.gameArticle && this.props.gameArticle.attributes.title}</Card.Title>
             </Card.Body>

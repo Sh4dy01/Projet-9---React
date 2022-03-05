@@ -26,6 +26,7 @@ code {
 }
 
 
+
 #basic-nav-dropdown{
   color: white;
 }
@@ -44,4 +45,8 @@ code {
 
 .navbar-brand {
   color: orange;
+}
+
+#title{
+  font-size: 80px;
 }
