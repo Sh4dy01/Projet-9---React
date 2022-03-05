@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Menu from '../components/Menu';
 import GameArticle from '../components/GameArticle';
 import {Container, Row, Col} from 'react-bootstrap';
+import FooterComposant from '../components/Footer';
 
 class Home extends Component {
   constructor(props) {
@@ -14,15 +15,16 @@ class Home extends Component {
   render() {
     return (
       <>
-      <div>
-        <Menu></Menu>
-        <Container>
-          <Row>
-          {this.props.gameArticles.data && this.props.gameArticles.data.map((gameArticles, i)=>
-          <Col xs={4} key={i}><GameArticle gamePlatforms={this.props.gamePlatforms}  gameArticle={this.props.gameArticles.data[i]}/></Col>)}
-          </Row>
-        </Container>
-      </div>
+        <div>
+          <Menu gameGenres={this.props.gameGenres}></Menu>
+          <Container className="shadow p-3 bg-body">
+            <Row>
+            {this.props.gameArticles.data && this.props.gameArticles.data.map((gameArticles, i)=>
+            <Col xs={4} key={i}><GameArticle gamePlatforms={this.props.gamePlatforms}  gameArticle={this.props.gameArticles.data[i]}/></Col>)}
+            </Row>
+          </Container>
+          <FooterComposant/>
+        </div>
       </>
     );
   }
