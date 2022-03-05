@@ -21,13 +21,13 @@ class Menu extends Component {
         return (
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                 <Container>
-                    <Navbar.Brand><Link to="/">INDE-STORE</Link></Navbar.Brand>
+                    <Navbar.Brand><Link to="/"><h1>INDE-STORE</h1></Link></Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
                             <Link to="/games">Jeux</Link>
                             <NavDropdown title="Genres" id="collasible-nav-dropdown" menuVariant="dark">
-                                
+
                                 {this.props.gameGenres && this.props.gameGenres.map((gameGenre, i)=>
                                     <NavDropdown.Item key={i}>
                                         <Link to=''>{gameGenre.attributes.name}</Link>

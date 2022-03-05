@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 
 function FooterComposant(){
     return(
-        <Container className="py-8 my-8 shadow p-3 bg-body border-top">
-            <footer>
+        <footer className="py-8 my-8 shadow p-3 bg-body border-top">
+            <Container>
                 <Row>
                     <Col class="col-3">
                         <h5>À PROPOS DE</h5>
@@ -37,18 +37,15 @@ function FooterComposant(){
                                 </Form.Text>
                             </Form.Group>
 
-                            <Button variant="primary" type="submit">
-                                Souscrire
-                            </Button>
+                            <Button variant="primary" type="submit">Souscrire</Button>
                         </Form>
                     </Col>
                 </Row>
-
                 <div class="d-flex justify-content-between py-4 border-top">
-                    <p>© 2021 Company, Inc. Tout droits réservés.</p>
+                    <p>© 2022 Company, Inc. Tout droits réservés.</p>
                 </div>
-            </footer>
-        </Container>
+            </Container>
+        </footer>
     )
 }
 

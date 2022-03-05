@@ -14,8 +14,12 @@ code {
     monospace;
 }
 
-h1, h2, h3, h4, span{
+h1, h2, h4, span{
   color: white;
+}
+
+h3{
+  color: black;
 }
 
 .card .card-footer button {
