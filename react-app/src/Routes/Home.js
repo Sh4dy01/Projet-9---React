@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Menu from '../components/Menu';
 import GameArticle from '../components/GameArticle';
-import {Container, Row, Col} from 'react-bootstrap';
+import {Container, Row, Button, Col, Form} from 'react-bootstrap';
 import FooterComposant from '../components/Footer';
 
 class Home extends Component {
@@ -14,18 +14,42 @@ class Home extends Component {
 
   render() {
     return (
-      <>
-        <div>
-          <Menu gameGenres={this.props.gameGenres}></Menu>
-          <Container className="shadow p-3 bg-body">
-            <Row>
-            {this.props.gameArticles.data && this.props.gameArticles.data.map((gameArticles, i)=>
-            <Col xs={4} key={i}><GameArticle gamePlatforms={this.props.gamePlatforms}  gameArticle={this.props.gameArticles.data[i]}/></Col>)}
-            </Row>
-          </Container>
-          <FooterComposant/>
-        </div>
-      </>
+      <div>
+        <Menu gameGenres={this.props.gameGenres}></Menu>
+        <Row>
+          <Col xs={2}>
+            <div>
+              <h3 className='border-bottom text-end'>Filtres</h3>
+              <Form>
+                {this.props.gameGenres && this.props.gameGenres.map((gameGenre, i)=>
+                  <div className="mb-1">
+                    <Form.Check 
+                      type='checkbox'
+                      key={i}
+                      label={gameGenre.attributes.name}
+                    />
+                  </div>
+                )}
+                <div className="d-grid gap-2">
+                  <Button variant="primary" type="submit" className='mx-auto'>Appliquer les filtres</Button>
+                </div>
+              </Form>
+            </div>
+          </Col>
+          <Col xs={10}>
+            <div className="shadow p-3 bg-body me-5">
+              <Row>
+                {this.props.gameArticles.data && this.props.gameArticles.data.map((gameArticle, i)=>
+                  <Col xs={4} key={i}>
+                    <GameArticle gamePlatforms={this.props.gamePlatforms}  gameArticle={gameArticle}/>
+                  </Col>
+                )}
+              </Row>
+            </div>
+          </Col>
+        </Row>
+        <FooterComposant/>
+      </div>
     );
   }
 }

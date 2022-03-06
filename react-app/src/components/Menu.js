@@ -19,15 +19,15 @@ class Menu extends Component {
     render() {
         console.log(this.props.gameGenres)
         return (
-            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="sticky-top">
                 <Container>
-                    <Navbar.Brand><Link to="/">INDE-STORE</Link></Navbar.Brand>
+                    <h1><Link to='/'>INDE-STORE</Link></h1>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
                             <Link to="/games">Jeux</Link>
                             <NavDropdown title="Genres" id="collasible-nav-dropdown" menuVariant="dark">
-                                
+
                                 {this.props.gameGenres && this.props.gameGenres.map((gameGenre, i)=>
                                     <NavDropdown.Item key={i}>
                                         <Link to=''>{gameGenre.attributes.name}</Link>
