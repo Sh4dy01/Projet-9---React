@@ -7,7 +7,7 @@ function FooterComposant(){
         <footer className="py-8 my-8 shadow p-3 bg-body border-top">
             <Container>
                 <Row>
-                    <Col className="col-3">
+                    <Col xl={3}>
                         <h5>À PROPOS DE</h5>
                         <ListGroup variant="flush">
                             <ListGroup.Item>Développeur</ListGroup.Item>
@@ -15,7 +15,7 @@ function FooterComposant(){
                         </ListGroup>
                     </Col>
 
-                    <Col className="col-5">
+                    <Col xl={5}>
                         <h5>MEILLEURES VENTES</h5>
                         <ListGroup variant="flush">
                             {/* Map sur 5 jeux les plus vendus*/}
@@ -27,7 +27,7 @@ function FooterComposant(){
                         </ListGroup>
                     </Col>
 
-                    <Col class="col-4 offset-1">
+                    <Col>
                         <Form>
                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                 <Form.Label><h5>Newsletter</h5></Form.Label>
@@ -36,7 +36,6 @@ function FooterComposant(){
                                     Nous ne partagerons pas votre e-mail.
                                 </Form.Text>
                             </Form.Group>
-
                             <Button variant="primary" type="submit">Souscrire</Button>
                         </Form>
                     </Col>

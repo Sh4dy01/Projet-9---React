@@ -27,11 +27,11 @@ class Game extends Component {
       <Container>
         <Row>
           <Col xs={8} className="bg-dark information">
-            {this.state.game.data && <h2 class='text-center title'>{this.state.game.data.attributes.title}</h2>}
+            {this.state.game.data && <h2 className='text-center title'>{this.state.game.data.attributes.title}</h2>}
             <Carousel>
               { this.state.game.data &&
                 this.state.game.data.attributes.media.data.map((media,i)=>
-                  <Carousel.Item>
+                  <Carousel.Item key={i}>
                     <img
                       className="d-block w-100"
                       src={"http://localhost:1337"+media.attributes.formats.large.url}
@@ -48,14 +48,15 @@ class Game extends Component {
               this.state.game.data &&
               <div className="description">{this.state.game.data.attributes.description}</div>
             }
-            {this.state.game.data &&
-            <iframe className="vid" src={this.state.game.data.attributes.vidLink} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            {
+              this.state.game.data &&
+              <iframe className="vid" src={this.state.game.data.attributes.vidLink} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
             }
           </Col>
           <Col xs={4} className="bg-dark">
             <div className='gameCart'>
               {this.state.game.data && <img src={"http://localhost:1337"+this.state.game.data.attributes.cover.data.attributes.formats.small.url} alt="cover du jeu"/>}
-              {this.state.game.data && <h3 class='text-center title'>{this.state.game.data.attributes.title}</h3>}
+              {this.state.game.data && <h3 className='text-center title'>{this.state.game.data.attributes.title}</h3>}
               <Stack gap={2} className="col-md-8 mx-auto">
                 <Button variant="secondary">ajouter au panier</Button>
                 <Button className='officialsite' variant="secondary" href={this.state.game.data && this.state.game.data.attributes.link} >site officiel</Button>

@@ -15,10 +15,10 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <Menu gameGenres={this.props.gameGenres}></Menu>
+        <Menu gameGenres={this.props.gameGenres} deleteGameFromTheCart={this.props.deleteGameFromTheCart}></Menu>
         <Row>
           <Col xs={2}>
-            <div>
+            <Container className="filter">
               <h3 className='border-bottom text-end'>Filtres</h3>
               <Form>
                 {this.props.gameGenres && this.props.gameGenres.map((gameGenre, i)=>
@@ -32,14 +32,14 @@ class Home extends Component {
                   <Button variant="primary" type="submit" className='mx-auto'>Appliquer les filtres</Button>
                 </div>
               </Form>
-            </div>
+            </Container>
           </Col>
           <Col xs={10}>
             <div className="shadow p-3 bg-body me-5">
               <Row>
                 {this.props.gameArticles.data && this.props.gameArticles.data.map((gameArticle, i)=>
                   <Col xs={12} md={6} xl={4} xxl={3} key={i}>
-                    <GameArticle gamePlatforms={this.props.gamePlatforms}  gameArticle={gameArticle} updateTotalPrice={this.props.updateTotalPrice}/>
+                    <GameArticle gamePlatforms={this.props.gamePlatforms}  gameArticle={gameArticle} updateTotalPrice={this.props.updateTotalPrice} addGameInTheCart={this.props.addGameInTheCart}/>
                   </Col>
                 )}
               </Row>

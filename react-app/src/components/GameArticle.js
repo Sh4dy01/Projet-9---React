@@ -13,16 +13,9 @@ class GameArticle extends Component {
   mouseHoverTrue = () => this.setState({mouseHover:true})
   mouseHoverFalse = () => this.setState({mouseHover:false})
 
-  addGameToLocalStorage = (game) => {
-    var temp = [];
-    temp = JSON.parse(localStorage.getItem('gamesInTheCart')) || [];
-    temp.push(game);
-    localStorage.setItem('gamesInTheCart', JSON.stringify(temp));
-  }
-
   updateTheCart = (game, gamePrice) =>{
     this.props.updateTotalPrice(gamePrice);
-    this.addGameToLocalStorage(game);
+    this.props.addGameInTheCart(game);
   }
 
   render(){

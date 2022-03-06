@@ -23,6 +23,19 @@ h3 {
   color: black;
 }
 
+.line{
+  background-color: #aaaaaa;
+  height: 1px;
+  width: 100%;
+  padding: 1px;
+  margin-bottom: 15px;
+}
+
+.title{
+  padding: 20px;
+  color: white;
+}
+
 .navbar h1 {
   color: orange;
   margin-right: 25px;
@@ -73,7 +86,7 @@ h3 {
 
 .card img{
   box-shadow: inset 0 0 10px black;
-  max-height: 250px;
+  min-height: 180px;
   border-radius: 3px;
   opacity: 1;
 }
@@ -87,12 +100,40 @@ h3 {
   color: white;
 }
 
-.navbar .navbar-collapse .navbar-nav .dropdown-menu {
-  min-width: 20rem;
+.navbar .genres .dropdown-menu  {
+  min-width: 11rem;
+}
+
+.navbar .cart .dropdown-menu  {
+  min-width: 25rem;
+}
+
+.navbar .navbar-collapse .navbar-nav .dropdown-menu a {
+  text-align: center;
+}
+
+.navbar .navbar-collapse .navbar-nav .dropdown-menu .line {
+  margin: 5px;
 }
 
 .navbar .navbar-collapse .navbar-nav .dropdown-menu .dropdown-item img{
-  height: 50px;
+  border: 1px solid grey;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 15%;
+}
+
+.navbar .navbar-collapse .navbar-nav .dropdown-menu .dropdown-item .game-info{
+  justify-content: center;
+  align-items: center;
+}
+
+.filter .form-check {
+  margin-left: 0.5em;
+}
+
+.filter .form-check label {
+  margin-left: 0.5em;
 }
 
 .gameCart{
@@ -109,26 +150,13 @@ h3 {
   font-size: 40px;
 }
 
-h5{
+.information h5{
   color: white;
   text-transform: capitalize;
 }
 
-.officialsite{
+.information .officialsite{
   margin-bottom: 25px;
-}
-
-.line{
-  background-color: #aaaaaa;
-  height: 1px;
-  width: 100%;
-  padding: 1px;
-  margin-bottom: 15px;
-}
-
-.title{
-  padding: 20px;
-  color: white;
 }
 
 .information .title{

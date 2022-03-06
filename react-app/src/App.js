@@ -21,6 +21,7 @@ class App extends Component{
       gameArticles: [],
       gamePlatforms: [],
       gameGenres: [],
+      gamesInTheCart: [],
       totalPrice: 0,
     }
   }
@@ -29,6 +30,22 @@ class App extends Component{
     var totalPrice = Number(Number(localStorage.getItem('totalPrice')) + Number(gamePrice)).toFixed(2);
     localStorage.setItem('totalPrice', totalPrice.toString());
     this.setState({totalPrice: totalPrice});
+  }
+
+  addGameInTheCart = (game) => {
+    var temp = []
+    temp = JSON.parse(localStorage.getItem('gamesInTheCart')) || [];
+    temp.push(game);
+    this.setState({gamesInTheCart: {...temp}});
+    localStorage.setItem('gamesInTheCart', JSON.stringify(temp));
+  }
+
+  deleteGameFromTheCart = (id) => {
+    var temp = []
+    temp = JSON.parse(localStorage.getItem('gamesInTheCart')) || [];
+    temp.splice(id, 1);
+    this.setState({gamesInTheCart: {...temp}});
+    localStorage.setItem('gamesInTheCart', JSON.stringify(temp));
   }
 
   componentDidMount = async () => {
@@ -49,7 +66,7 @@ class App extends Component{
     return (
       <Router>
         <Routes>
-          <Route exact path='/' element={<Home gamePlatforms={this.state.gamePlatforms} gameArticles={this.state.gameArticles} gameGenres={this.state.gameGenres.data} totalPrice={this.state.totalPrice} updateTotalPrice={this.updateTotalPrice}/>} />
+          <Route exact path='/' element={<Home gamePlatforms={this.state.gamePlatforms} gameArticles={this.state.gameArticles} gameGenres={this.state.gameGenres.data} updateTotalPrice={this.updateTotalPrice} addGameInTheCart={this.addGameInTheCart} deleteGameFromTheCart={this.deleteGameFromTheCart}/>} />
           <Route exact path='/game' element={<Game gameArticles={this.state.gameArticles} gameGenres={this.state.gameGenres.data}/>} />
           <Route exact path='/cart' element={<Cart gameGenres={this.state.gameGenres.data}/>} />
           <Route exact path='/about-us' element={<AboutUs />} />
