@@ -72,6 +72,9 @@
       "relation": "manyToOne",
       "target": "api::developer.developer",
       "inversedBy": "games"
+    },
+    "vidLink": {
+      "type": "string"
     }
   }
 }

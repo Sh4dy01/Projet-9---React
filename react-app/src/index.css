@@ -61,10 +61,25 @@ h1, h2, h3, h4, span{
   color: orange;
 }
 
-#title{
-  font-size: 80px;
-}
-
 .navbar .navbar-collapse .navbar-nav .dropdown-menu .dropdown-item img{
   
+}
+.gameCart{
+  background-color: #292A30 !important;
+}
+
+.gameCart img{
+  width: 50%;
+}
+
+.title{
+  padding: 20px;
+}
+
+.vid{
+  position: fixed;
+  width: 600px;
+  height: 340px;
+  bottom: 0;
+  right: 0;
 }
