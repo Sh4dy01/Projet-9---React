@@ -39,13 +39,13 @@ class Menu extends Component {
                                 {localStorage.getItem('gamesInTheCart') && JSON.parse(localStorage.getItem('gamesInTheCart')).map((article, i)=>
                                     <NavDropdown.Item key={i} as="button">
                                         <Row className='game-info'>
-                                            {/*<Col xs={2}>
-                                                <Button variant="danger" size="sm" onMouseDown={this.props.deleteGameFromTheCart(i)}>
+                                            <Col xs={2}>
+                                                <Button variant="danger" size="sm" /*onMouseDown={this.props.deleteGameFromTheCart(i)}}*/>
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
                                                         <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"></path>
                                                     </svg>
                                                 </Button>
-                                            </Col>*/}
+                                            </Col>
                                             <Col xs={4}><Image className='fluid float-start' src={article && "http://localhost:1337"+article.attributes.cover.data.attributes.formats.thumbnail.url}/></Col>
                                             <Col xs={5} className="text-start"><span className='text-wrap'>{article && article.attributes.title}</span></Col> 
                                             <Col xs={3} className='text-end'><strong>{article && article.attributes.price + " €"}</strong></Col>

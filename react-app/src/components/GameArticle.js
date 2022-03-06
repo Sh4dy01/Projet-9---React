@@ -13,17 +13,12 @@ class GameArticle extends Component {
   mouseHoverTrue = () => this.setState({mouseHover:true})
   mouseHoverFalse = () => this.setState({mouseHover:false})
 
-  updateTheCart = (game, gamePrice) =>{
-    this.props.updateTotalPrice(gamePrice);
-    this.props.addGameInTheCart(game);
-  }
-
   render(){
     return (
       <Card className="shadow-sm p-3 mb-5 bg-body"> 
           <Link to={"/Game?ID="+this.props.gameArticle.id}>
-            <Card.Img className="fluid" variant="top" src={this.props.gameArticle && "http://localhost:1337"+this.props.gameArticle.attributes.cover.data.attributes.formats.medium.url} />
-            <Card.Title className="text-center">{this.props.gameArticle && this.props.gameArticle.attributes.title}</Card.Title>
+            <Card.Img className="fluid" variant="top" src={"http://localhost:1337"+this.props.gameArticle.attributes.cover.data.attributes.formats.medium.url} />
+            <Card.Title className="text-center">{this.props.gameArticle.attributes.title}</Card.Title>
           </Link>
           <Card.Footer>
             <Row>
@@ -32,8 +27,8 @@ class GameArticle extends Component {
               <Button variant="outline-success" 
                 onMouseOver={()=>this.mouseHoverTrue()}
                 onMouseLeave={()=>this.mouseHoverFalse()}
-                onMouseDown={()=>this.updateTheCart(this.props.gameArticle, this.props.gameArticle.attributes.price)}>
-                {this.state.mouseHover ? "Ajouter" : this.props.gameArticle && this.props.gameArticle.attributes.price+" €"}</Button></Col>
+                onMouseDown={()=>this.props.addGameInTheCart(this.props.gameArticle, this.props.gameArticle.attributes.price)}>
+                {this.state.mouseHover ? "Ajouter" : this.props.gameArticle.attributes.price + " €"}</Button></Col>
             </Row>
           </Card.Footer>
       </Card>

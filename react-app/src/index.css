@@ -36,6 +36,11 @@ h3 {
   color: white;
 }
 
+.game-info{
+  justify-content: center;
+  align-items: center;
+}
+
 .navbar h1 {
   color: orange;
   margin-right: 25px;
@@ -123,11 +128,6 @@ h3 {
   border-radius: 15%;
 }
 
-.navbar .navbar-collapse .navbar-nav .dropdown-menu .dropdown-item .game-info{
-  justify-content: center;
-  align-items: center;
-}
-
 .filter .form-check {
   margin-left: 0.5em;
 }
@@ -148,6 +148,11 @@ h3 {
 
 .gameCart .title{
   font-size: 40px;
+}
+
+.gameCart h5{
+  color: white;
+  text-transform: capitalize;
 }
 
 .information h5{
@@ -180,4 +185,30 @@ h3 {
   padding: 35px;
   font-size: 25px;
   color: white;
+}
+
+.cart-page .line {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.cart-page strong, .cart-page span {
+  font-size: 30px;
+  color: white;
+}
+
+.cart-page h3 {
+  color: white;
+}
+
+.cart-page img {
+  border: 1px solid grey;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 15%;
+}
+
+footer {
+  padding: 1em;
+  padding-bottom: 0;
 }

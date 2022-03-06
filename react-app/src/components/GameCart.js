@@ -10,13 +10,16 @@ class GameCart extends Component {
 
 
     render(){
-    return (
-        <Row>
-            <Col><Image className='fluid rounded float-start' src={this.props.gameArticle && "http://localhost:1337"+this.props.gameArticle.attributes.cover.data.attributes.formats.large.url}></Image></Col>
-            <Col><h4>{this.props.gameArticle && this.props.gameArticle.attributes.title}</h4></Col>
-            <Col><h5>{this.props.gameArticle && this.props.gameArticle.attributes.price}</h5></Col>
-        </Row>
-    );
+        return (
+            <Row className="game-info">
+                <div className="line"></div>
+                <Col xs={4}><Image className='fluid rounded' src={"http://localhost:1337" + this.props.gameArticle.attributes.cover.data.attributes.formats.small.url}></Image></Col>
+                <Col>
+                    <h3 className='text-start'>{this.props.gameArticle.attributes.title}</h3>
+                    <strong className='float-end'>{this.props.gameArticle.attributes.price + " €"}</strong>
+                </Col>
+            </Row>
+        );
     }
 }
 
