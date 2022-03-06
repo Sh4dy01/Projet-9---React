@@ -22,13 +22,11 @@ class Home extends Component {
               <h3 className='border-bottom text-end'>Filtres</h3>
               <Form>
                 {this.props.gameGenres && this.props.gameGenres.map((gameGenre, i)=>
-                  <div className="mb-1">
-                    <Form.Check 
-                      type='checkbox'
-                      key={i}
-                      label={gameGenre.attributes.name}
-                    />
-                  </div>
+                  <Form.Check 
+                    type='checkbox'
+                    key={i}
+                    label={gameGenre.attributes.name}
+                  />
                 )}
                 <div className="d-grid gap-2">
                   <Button variant="primary" type="submit" className='mx-auto'>Appliquer les filtres</Button>
@@ -40,8 +38,8 @@ class Home extends Component {
             <div className="shadow p-3 bg-body me-5">
               <Row>
                 {this.props.gameArticles.data && this.props.gameArticles.data.map((gameArticle, i)=>
-                  <Col xs={4} key={i}>
-                    <GameArticle gamePlatforms={this.props.gamePlatforms}  gameArticle={gameArticle}/>
+                  <Col xs={12} md={6} xl={4} xxl={3} key={i}>
+                    <GameArticle gamePlatforms={this.props.gamePlatforms}  gameArticle={gameArticle} updateTotalPrice={this.props.updateTotalPrice}/>
                   </Col>
                 )}
               </Row>

@@ -18,11 +18,19 @@ class App extends Component{
   constructor(props){
     super(props)
     this.state={
-      gameArticles:[],
-      gamePlatforms:[],
-      gameGenres:[]
+      gameArticles: [],
+      gamePlatforms: [],
+      gameGenres: [],
+      totalPrice: 0,
     }
   }
+
+  updateTotalPrice = (gamePrice) => {
+    var totalPrice = Number(Number(localStorage.getItem('totalPrice')) + Number(gamePrice)).toFixed(2);
+    localStorage.setItem('totalPrice', totalPrice.toString());
+    this.setState({totalPrice: totalPrice});
+  }
+
   componentDidMount = async () => {
     const response = await fetch('http://localhost:1337/api/games?populate=*', {method: 'GET', headers: {'Accept': 'application/json', 'Content-Type':'application/json'}})
     const gameArticles = await response.json()
@@ -35,15 +43,13 @@ class App extends Component{
     const response3 = await fetch('http://localhost:1337/api/genres?sort[0]=name', {method: 'GET', headers: {'Accept': 'application/json', 'Content-Type':'application/json'}})
     const gameGenres = await response3.json()
     this.setState({gameGenres:gameGenres})
-
-    localStorage.setItem('totalPrice', "0,00")
   }
 
   render() {
     return (
       <Router>
         <Routes>
-          <Route exact path='/' element={<Home gamePlatforms={this.state.gamePlatforms} gameArticles={this.state.gameArticles} gameGenres={this.state.gameGenres.data}/>} />
+          <Route exact path='/' element={<Home gamePlatforms={this.state.gamePlatforms} gameArticles={this.state.gameArticles} gameGenres={this.state.gameGenres.data} totalPrice={this.state.totalPrice} updateTotalPrice={this.updateTotalPrice}/>} />
           <Route exact path='/game' element={<Game gameArticles={this.state.gameArticles} gameGenres={this.state.gameGenres.data}/>} />
           <Route exact path='/cart' element={<Cart gameGenres={this.state.gameGenres.data}/>} />
           <Route exact path='/about-us' element={<AboutUs />} />

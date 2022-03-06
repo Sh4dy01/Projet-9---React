@@ -11,13 +11,12 @@ class Menu extends Component {
     }
 
     componentDidMount(){
-        localStorage.getItem('gameArticlesInTheCart') && this.setState({
-            gameArticlesInTheCart : JSON.parse(localStorage.getItem('gameArticlesInTheCart'))
+        localStorage.getItem('gamesInTheCart') && this.setState({
+            gameArticlesInTheCart : JSON.parse(localStorage.getItem('gamesInTheCart'))
         })
     }
 
     render() {
-        console.log(this.props.gameGenres)
         return (
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="sticky-top">
                 <Container>
@@ -41,12 +40,12 @@ class Menu extends Component {
                             <NavDropdown title="Panier" id="collasible-nav-dropdown" menuVariant="dark" align="end">
                                 <NavDropdown.Header className='text-center'>Liste d'articles</NavDropdown.Header>
 
-                                {this.state.gameArticlesInTheCart.data && this.state.gameArticlesInTheCart.data.map((article, i)=>
+                                {this.state.gameArticlesInTheCart && this.state.gameArticlesInTheCart.map((article, i)=>
                                     <NavDropdown.Item key={i}>
                                         <Row>
-                                            <Col><Image className='fluid rounded float-start' src={article && "http://localhost:1337"+article.attributes.cover.data.attributes.formats.small.url}/></Col>
-                                            <Col lg="auto" className='text-center'><span>{article && article.attributes.title}</span></Col> 
-                                            <Col><span className='float-end'>{article && article.attributes.price}</span></Col>
+                                            <Col><Image className='fluid rounded float-start' src={article && "http://localhost:1337"+article.attributes.cover.data.attributes.formats.thumbnail.url}/></Col>
+                                            <Col><span className='text-start'>{article && article.attributes.title}</span></Col> 
+                                            <Col className='float-end text-end'><strong>{article && article.attributes.price}</strong></Col>
                                         </Row>
                                     </NavDropdown.Item>
                                 )}
@@ -54,7 +53,7 @@ class Menu extends Component {
                                 <NavDropdown.Header>
                                     <Row>
                                         <Col><span>Total :</span></Col>
-                                        <Col><span className='float-end'>{localStorage.getItem('totalPrice') + " €"}</span></Col>
+                                        <Col><strong className='float-end'>{localStorage.getItem('totalPrice') + " €"}</strong></Col>
                                     </Row>
                                 </NavDropdown.Header>
                                 <NavDropdown.Item><Link to="/cart"><Button variant="outline-light">ALLER AU PANIER</Button></Link></NavDropdown.Item>
