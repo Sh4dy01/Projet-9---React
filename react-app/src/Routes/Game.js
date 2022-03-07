@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { CarouselItem, Container, Carousel, Row, Col, Button, Stack } from 'react-bootstrap';
 import FooterComposant from '../components/Footer';
 import Menu from '../components/Menu';
+import ReactMarkdown from 'react-markdown'
 
 class Game extends Component {
 
@@ -11,7 +12,8 @@ class Game extends Component {
       game:[],
       developer:[],
       editor:[],
-      platforms:[]
+      platforms:[],
+      genres:[]
     }
   }
 
@@ -21,30 +23,27 @@ class Game extends Component {
     const ID = await urlParams.get("ID")
     const response = await fetch('http://localhost:1337/api/games/'+ID+'?populate=*', {method: 'GET', headers: {'Accept': 'application/json', 'Content-Type':'application/json'}})
     const game = await response.json()
-    this.setState({game:game})
 
-    const response2 = await fetch('http://localhost:1337/api/developers?populate=*&filters[id][$eq]='+this.state.game.data.attributes.developer.data.id, {method: 'GET', headers: {'Accept': 'application/json', 'Content-Type':'application/json'}})
+    const response2 = await fetch('http://localhost:1337/api/developers?populate=*&filters[id][$eq]='+game.data.attributes.developer.data.id, {method: 'GET', headers: {'Accept': 'application/json', 'Content-Type':'application/json'}})
     const developer = await response2.json()
-    this.setState({developer:developer})
 
-    const response3 = await fetch('http://localhost:1337/api/editors?populate=*&filters[id][$eq]='+this.state.game.data.attributes.editor.data.id, {method: 'GET', headers: {'Accept': 'application/json', 'Content-Type':'application/json'}})
+    const response3 = await fetch('http://localhost:1337/api/editors?populate=*&filters[id][$eq]='+game.data.attributes.editor.data.id, {method: 'GET', headers: {'Accept': 'application/json', 'Content-Type':'application/json'}})
     const editor = await response3.json()
-    this.setState({editor:editor})
 
     const response4 = await fetch('http://localhost:1337/api/platforms?populate=*', {method: 'GET', headers: {'Accept': 'application/json', 'Content-Type':'application/json'}})
     const platforms = await response4.json()
-    this.setState({platforms:platforms})
 
-    const gamePlatforms = this.state.platforms.data.filter((platforms,i)=>
-      platforms.id === this.state.game.data.attributes.platforms.data.id
-    )
-    this.setState({platforms:gamePlatforms})
+    const response5 = await fetch('http://localhost:1337/api/genres?populate=*', {method: 'GET', headers: {'Accept': 'application/json', 'Content-Type':'application/json'}})
+    const genres = await response5.json()
 
-  }
+    this.setState({platforms:platforms,game:game,developer:developer,editor:editor,genres:genres})
+    }
 
   render(){
+    console.log(this.state);
     return (
       <div>
+        <img className='backgroundIMG' src={this.state.game.data && "http://localhost:1337"+this.state.game.data.attributes.cover.data.attributes.formats.large.url} />
         <Menu/>
         <Container>
           <Row>
@@ -63,16 +62,21 @@ class Game extends Component {
                 )}
               </Carousel>
               <div className='genre'>
-                <h5>Genre</h5>
-
+                <div className='space'>
+                  <h5>genres</h5>
+                  <p>
+                    {this.state.game.data && this.state.game.data.attributes.genres.data
+                      .map((genresGame,i)=> {
+                          const genresItem = this.state.genres.data.find(tag => tag.id===genresGame.id)
+                          return " / "+genresItem.attributes.name
+                        })
+                        }
+                  </p>
+                </div>
               </div>
               {
                 this.state.game.data &&
-                <div className="description">{this.state.game.data.attributes.description}</div>
-              }
-              {
-                this.state.game.data &&
-                <iframe className="vid mx-auto" src={this.state.game.data.attributes.vidLink} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                <ReactMarkdown className="description">{this.state.game.data.attributes.description}</ReactMarkdown>
               }
             </Col>
             <Col xs={4} className="bg-dark">
@@ -107,17 +111,28 @@ class Game extends Component {
                     <Col>
                       <img className='icon' src={ this.state.editor.data && "http://localhost:1337"+this.state.editor.data[0].attributes.icon.data.attributes.formats.thumbnail.url }/>
                     </Col>
-                  </Row>
+                  </Row> 
                     <div className='line'></div>
                   <Row>
                     <Col>
-                      <h5>Plarformes</h5>
+                      <h5>Plateformes</h5>
                     </Col>
-                      {/*this.state.platforms.data && this.state.platforms.data.map((platforms,i)=>
-                      <Col><img className='icon' src={"http://localhost:1337"+platforms[i].attributes.icon.data.attributes.formats.thumbnail.url} /></Col>
-            )*/}
+                      {this.state.game.data && this.state.game.data.attributes.platforms.data
+                      .map((platformGame,i)=> {
+                        const platformItem = this.state.platforms.data.find(plat => plat.id===platformGame.id)
+                        return <Col ><img className='icon' src={"http://localhost:1337"+platformItem.attributes.icon.data.attributes.formats.thumbnail.url} /></Col>
+                      })
+                      }
                   </Row>
               </div>
+            </Col>
+          </Row>
+          <Row className='bg-dark justify-content-md-center'>
+            <Col xs={8}>
+              {
+                this.state.game.data &&
+                <iframe className="vid mx-auto" src={this.state.game.data.attributes.vidLink} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+              }
             </Col>
           </Row>
         </Container>
