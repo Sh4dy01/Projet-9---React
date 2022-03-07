@@ -23,17 +23,23 @@ class Game extends Component {
     const game = await response.json()
     this.setState({game:game})
 
-    const response2 = await fetch('http://localhost:1337/api/developer?populate=*', {method: 'GET', headers: {'Accept': 'application/json', 'Content-Type':'application/json'}})
+    const response2 = await fetch('http://localhost:1337/api/developers?populate=*&filters[id][$eq]='+this.state.game.data.attributes.developer.data.id, {method: 'GET', headers: {'Accept': 'application/json', 'Content-Type':'application/json'}})
     const developer = await response2.json()
     this.setState({developer:developer})
 
-    const response3 = await fetch('http://localhost:1337/api/editor?populate=*', {method: 'GET', headers: {'Accept': 'application/json', 'Content-Type':'application/json'}})
+    const response3 = await fetch('http://localhost:1337/api/editors?populate=*&filters[id][$eq]='+this.state.game.data.attributes.editor.data.id, {method: 'GET', headers: {'Accept': 'application/json', 'Content-Type':'application/json'}})
     const editor = await response3.json()
     this.setState({editor:editor})
 
     const response4 = await fetch('http://localhost:1337/api/platforms?populate=*', {method: 'GET', headers: {'Accept': 'application/json', 'Content-Type':'application/json'}})
     const platforms = await response4.json()
     this.setState({platforms:platforms})
+
+    const gamePlatforms = this.state.platforms.data.filter((platforms,i)=>
+      platforms.id === this.state.game.data.attributes.platforms.data.id
+    )
+    this.setState({platforms:gamePlatforms})
+
   }
 
   render(){
@@ -71,7 +77,7 @@ class Game extends Component {
             </Col>
             <Col xs={4} className="bg-dark">
               <div className='gameCart'>
-                {this.state.game.data && <img src={"http://localhost:1337"+this.state.game.data.attributes.cover.data.attributes.formats.small.url} alt="cover du jeu"/>}
+                {this.state.game.data && <img className='cover' src={"http://localhost:1337"+this.state.game.data.attributes.cover.data.attributes.formats.small.url} alt="cover du jeu"/>}
                 {this.state.game.data && <h3 className='text-center title'>{this.state.game.data.attributes.title}</h3>}
                 <Stack gap={2} className="col-md-8 mx-auto">
                   <Button variant="secondary" onMouseDown={()=>this.props.addGameInTheCart(this.state.game.data, this.state.game.data.attributes.price)}>ajouter au panier</Button>
@@ -87,11 +93,7 @@ class Game extends Component {
                       <p>{ this.state.game.data && this.state.game.data.attributes.developer.data.attributes.name}</p>
                     </Col>
                     <Col>
-                      <img src={
-                        this.state.developer.data && this.state.game.data && this.state.developer.data.map((developer,i)=>
-                        developer.id == this.state.game.data.attributes.developer.data.id && "http://localhost:1337"+developer.attributes.icon.data.attributes.formats.thumbnail.url
-                        )
-                      }/>
+                      <img className='icon' src={ this.state.developer.data && "http://localhost:1337"+this.state.developer.data[0].attributes.icon.data.attributes.formats.thumbnail.url }/>
                     </Col>
                   </Row>
                   <div className='line'></div>
@@ -103,11 +105,7 @@ class Game extends Component {
                       <p>{ this.state.game.data && this.state.game.data.attributes.editor.data.attributes.name}</p>
                     </Col>
                     <Col>
-                      <img src={
-                        this.state.editor.data && this.state.game.data && this.state.editor.data.map((editor,i)=>
-                          editor.id == this.state.game.data.attributes.editor.data.id && "http://localhost:1337"+editor.attributes.icon.data.attributes.formats.thumbnail.url
-                        )
-                      }/>
+                      <img className='icon' src={ this.state.editor.data && "http://localhost:1337"+this.state.editor.data[0].attributes.icon.data.attributes.formats.thumbnail.url }/>
                     </Col>
                   </Row>
                     <div className='line'></div>
@@ -115,10 +113,9 @@ class Game extends Component {
                     <Col>
                       <h5>Plarformes</h5>
                     </Col>
-                      {this.state.platforms.data && this.state.game.data && this.state.platforms.data.map((platforms,i)=>
-                            platforms.id == this.state.game.data.attributes.platforms.data.id && <Col><img src={"http://localhost:1337"+platforms.attributes.icon.data.attributes.formats.thumbnail.url}/></Col>
-                          )
-                      }
+                      {/*this.state.platforms.data && this.state.platforms.data.map((platforms,i)=>
+                      <Col><img className='icon' src={"http://localhost:1337"+platforms[i].attributes.icon.data.attributes.formats.thumbnail.url} /></Col>
+            )*/}
                   </Row>
               </div>
             </Col>
