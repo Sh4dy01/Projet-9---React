@@ -160,7 +160,7 @@ h3 {
   text-transform: capitalize;
 }
 
-.information .officialsite{
+.officialsite{
   margin-bottom: 25px;
 }
 
@@ -212,3 +212,8 @@ footer {
   padding: 1em;
   padding-bottom: 0;
 }
+
+p{
+  color: white;
+}
+
