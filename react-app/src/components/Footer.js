@@ -36,7 +36,7 @@ function FooterComposant(){
                                     Nous ne partagerons pas votre e-mail.
                                 </Form.Text>
                             </Form.Group>
-                            <Button variant="primary" type="submit">Souscrire</Button>
+                            <Button variant="primary">Souscrire</Button>
                         </Form>
                     </Col>
                 </Row>

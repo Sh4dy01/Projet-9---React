@@ -27,23 +27,27 @@ class App extends Component{
   }
 
   addGameInTheCart = (game, gamePrice) => {
-    var temp = []
+    let temp = []
     temp = JSON.parse(localStorage.getItem('gamesInTheCart')) || [];
     temp.push(game);
     this.setState({gamesInTheCart: {...temp}});
     localStorage.setItem('gamesInTheCart', JSON.stringify(temp));
 
-    var totalPrice = Number(Number(localStorage.getItem('totalPrice')) + Number(gamePrice)).toFixed(2);
+    let totalPrice = Number(Number(localStorage.getItem('totalPrice')) + Number(gamePrice)).toFixed(2);
     localStorage.setItem('totalPrice', totalPrice.toString());
     this.setState({totalPrice: totalPrice});
   }
 
-  deleteGameFromTheCart = (id) => {
-    var temp = []
+  deleteGameFromTheCart = (id, gamePrice) => {
+    let temp = []
     temp = JSON.parse(localStorage.getItem('gamesInTheCart')) || [];
     temp.splice(id, 1);
     this.setState({gamesInTheCart: {...temp}});
     localStorage.setItem('gamesInTheCart', JSON.stringify(temp));
+
+    let totalPrice = Number(Number(localStorage.getItem('totalPrice')) - Number(gamePrice)).toFixed(2);
+    localStorage.setItem('totalPrice', totalPrice.toString());
+    this.setState({totalPrice: totalPrice});
   }
 
   componentDidMount = async () => {
@@ -71,7 +75,7 @@ class App extends Component{
         <Routes>
           <Route exact path='/' element={<Home gamePlatforms={this.state.gamePlatforms} gameArticles={this.state.gameArticles} gameGenres={this.state.gameGenres.data} addGameInTheCart={this.addGameInTheCart} deleteGameFromTheCart={this.deleteGameFromTheCart}/>} />
           <Route exact path='/game' element={<Game gameGenres={this.state.gameGenres.data} addGameInTheCart={this.addGameInTheCart} />} />
-          <Route exact path='/cart' element={<Cart gameGenres={this.state.gameGenres.data} gamesInTheCart={this.state.gamesInTheCart}/>} />
+          <Route exact path='/cart' element={<Cart gameGenres={this.state.gameGenres.data} deleteGameFromTheCart={this.deleteGameFromTheCart}/>} />
           <Route exact path='/about-us' element={<AboutUs />} />
           <Route exact path='/user' element={<User />} />
         </Routes>
