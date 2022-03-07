@@ -72,7 +72,7 @@ class App extends Component{
     return (
       <Router>
         <Routes>
-          <Route exact path='/' element={<Home gamePlatforms={this.state.gamePlatforms} gameArticles={this.state.gameArticles} gameGenres={this.state.gameGenres.data} addGameInTheCart={this.addGameInTheCart} deleteGameFromTheCart={this.deleteGameFromTheCart}/>} />
+          <Route exact path='/' element={<Home gamePlatforms={this.state.gamePlatforms} gameArticles={this.state.gameArticles.data} gameGenres={this.state.gameGenres.data} addGameInTheCart={this.addGameInTheCart} deleteGameFromTheCart={this.deleteGameFromTheCart}/>} />
           <Route exact path='/game' element={<Game gameGenres={this.state.gameGenres.data} addGameInTheCart={this.addGameInTheCart} />} />
           <Route exact path='/cart' element={<Cart gameGenres={this.state.gameGenres.data} deleteGameFromTheCart={this.deleteGameFromTheCart}/>} />
           <Route exact path='/about-us' element={<AboutUs />} />
