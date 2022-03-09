@@ -1,5 +1,7 @@
 import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
+import {Link} from 'react-router-dom'
+
 
 import Menu from '../components/Menu';
 import GameCart from '../components/GameCart';
@@ -34,7 +36,9 @@ function Cart(props){
             </Row>
             <div className='line'/>
             <div className='text-center'>
-              <Button  size="sm" variant="light" style={{ width: '50%' }}>Payer</Button>
+              <Link to="/sendcommand">
+                <Button size="sm" variant="light" style={{ width: '50%' }} >Payer</Button>
+              </Link>
             </div>
           </Col>
         </Row>
