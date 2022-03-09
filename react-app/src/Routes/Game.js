@@ -80,7 +80,7 @@ class Game extends Component {
                 <ReactMarkdown className="description">{this.state.game.data.attributes.description}</ReactMarkdown>
               }
             </Col>
-            <Col xs={4} className="bg-dark gameCart sticky-top">
+            <Col xs={4} className="bg-dark gameCart">
               <div className='gameCart'>
                 {this.state.game.data && 
                 <img className='cover' src={"http://localhost:1337" + this.state.game.data.attributes.cover.data.attributes.formats.small.url} alt="cover du jeu"/>}

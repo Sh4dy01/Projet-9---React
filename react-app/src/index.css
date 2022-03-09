@@ -157,6 +157,7 @@ h3 {
 .gameCart{
 
   top: 50px;
+  position: sticky;
 }
 
 .gameCart .cover {
