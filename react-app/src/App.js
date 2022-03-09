@@ -13,6 +13,7 @@ import Game from './routes/Game';
 import Cart from './routes/Cart';
 import User from './routes/User';
 import AboutUs from './routes/About-us';
+import SendCommand from './routes/Checkout';
 
 class App extends Component{
   constructor(props){
@@ -84,6 +85,7 @@ class App extends Component{
           <Route exact path='/' element={<Home gamePlatforms={this.state.gamePlatforms.data} gameArticles={this.state.gameArticles.data} gameGenres={this.state.gameGenres.data} updateTheCart={this.updateTheCart}/>} />
           <Route exact path='/game' element={<Game gameGenres={this.state.gameGenres.data} gamePlatforms={this.state.gamePlatforms.data} updateTheCart={this.updateTheCart} />} />
           <Route exact path='/cart' element={<Cart updateTheCart={this.updateTheCart}/>} />
+          <Route exact path='/sendcommand' element={<SendCommand commandData={localStorage.getItem('gamesInTheCart') && JSON.parse(localStorage.getItem('gamesInTheCart'))}/>}/>
           <Route exact path='/about-us' element={<AboutUs />} />
           <Route exact path='/user' element={<User />} />
         </Routes>

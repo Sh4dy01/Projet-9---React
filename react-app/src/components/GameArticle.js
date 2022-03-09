@@ -23,7 +23,7 @@ class GameArticle extends Component {
         <Card.Footer>
           <Row>
             {
-              this.props.gameArticle && this.props.gameArticle.attributes.platforms.data
+              this.props.gameArticle.attributes.platforms && this.props.gamePlatforms && this.props.gameArticle.attributes.platforms.data
               .map((platformGame,i)=> {
                 const platformItem = this.props.gamePlatforms.find(plat => plat.id===platformGame.id)
                 return <Col key={i}><img className='icon' src={"http://localhost:1337" + platformItem.attributes.icon.data.attributes.formats.thumbnail.url} /></Col>
