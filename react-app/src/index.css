@@ -8,6 +8,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 code {
@@ -36,7 +37,7 @@ h3 {
   color: white;
 }
 
-.game-info{
+.centered-alignment{
   justify-content: center;
   align-items: center;
 }
@@ -117,6 +118,11 @@ h3 {
   min-width: 25rem;
 }
 
+.list-articles { 
+  max-height: 20rem;
+  overflow-y: overlay;
+}
+
 .navbar .navbar-collapse .navbar-nav .dropdown-menu a {
   text-align: center;
 }
@@ -125,7 +131,7 @@ h3 {
   margin: 5px;
 }
 
-.navbar .navbar-collapse .navbar-nav .dropdown-menu .dropdown-item img{
+.navbar .navbar-collapse .navbar-nav .dropdown-menu img{
   border: 1px solid grey;
   width: 100%;
   object-fit: cover;
@@ -133,11 +139,11 @@ h3 {
 }
 
 .filter .form-check {
-  margin-left: 0.5em;
+  margin-left: 0.5rem;
 }
 
 .filter .form-check label {
-  margin-left: 0.5em;
+  margin-left: 0.5rem;
 }
 
 .backgroundIMG{
@@ -149,7 +155,7 @@ h3 {
 }
 
 .gameCart{
-  position: sticky;
+
   top: 50px;
 }
 
@@ -183,9 +189,9 @@ h3 {
 
 .genre{
   width: 100%;
-  height: 100px;
   margin: 20px;
   border-left: 2px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.01);
 }
 
 .vid{
@@ -208,12 +214,22 @@ h3 {
 }
 
 .cart-page strong, .cart-page span {
-  font-size: 30px;
+  font-size: 20px;
   color: white;
 }
 
 .cart-page h3 {
   color: white;
+  font-size: 25px;
+}
+
+.cart-page .platform-selection .form-select {
+  width: 50%;
+  font-size: 0.75rem;
+}
+
+.cart-page .platform-selection span {
+  font-size: 20px;
 }
 
 .cart-page img {
@@ -224,7 +240,7 @@ h3 {
 }
 
 footer {
-  padding: 1em;
+  padding: 1rem;
   padding-bottom: 0;
 }
 

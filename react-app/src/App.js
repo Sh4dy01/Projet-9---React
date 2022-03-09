@@ -22,59 +22,68 @@ class App extends Component{
       gamePlatforms: [],
       gameGenres: [],
       gamesInTheCart: [],
-      totalPrice: 0,
     }
   }
 
-  addGameInTheCart = (game, gamePrice) => {
-    let temp = []
+  updateTheCart = (game, idFromTheCart, addToTheCart) => {
+    let temp = [];
+    let totalPrice = Number(localStorage.getItem('totalPrice'));
+
     temp = JSON.parse(localStorage.getItem('gamesInTheCart')) || [];
-    temp.push(game);
-    this.setState({gamesInTheCart: {...temp}});
+
+    if (addToTheCart) {
+      temp.push(game);
+      totalPrice += Number(game.attributes.price);
+    }
+    else {
+      temp.splice(idFromTheCart, 1);
+      totalPrice -= Number(game.attributes.price);
+    }
+
+    totalPrice = Number(totalPrice).toFixed(2);
+
     localStorage.setItem('gamesInTheCart', JSON.stringify(temp));
+    localStorage.setItem('totalPrice', totalPrice);
 
-    let totalPrice = Number(Number(localStorage.getItem('totalPrice')) + Number(gamePrice)).toFixed(2);
-    localStorage.setItem('totalPrice', totalPrice.toString());
-    this.setState({totalPrice: totalPrice});
-  }
-
-  deleteGameFromTheCart = (id, gamePrice) => {
-    let temp = []
-    temp = JSON.parse(localStorage.getItem('gamesInTheCart')) || [];
-    temp.splice(id, 1);
     this.setState({gamesInTheCart: {...temp}});
-    localStorage.setItem('gamesInTheCart', JSON.stringify(temp));
-
-    let totalPrice = Number(Number(localStorage.getItem('totalPrice')) - Number(gamePrice)).toFixed(2);
-    localStorage.setItem('totalPrice', totalPrice.toString());
-    this.setState({totalPrice: totalPrice});
   }
 
   componentDidMount = async () => {
-    const response = await fetch('http://localhost:1337/api/games?populate=*', {method: 'GET', headers: {'Accept': 'application/json', 'Content-Type':'application/json'}})
+    const response = await fetch('http://localhost:1337/api/games?sort[0]=launched_date%3Adesc&populate=*', {
+      method: 'GET', 
+      headers: {'Accept': 'application/json', 'Content-Type':'application/json'}}
+    )
     const gameArticles = await response.json()
-    this.setState({gameArticles:gameArticles})
 
-    const response2 = await fetch('http://localhost:1337/api/platforms?populate=*', {method: 'GET', headers: {'Accept': 'application/json', 'Content-Type':'application/json'}})
+    const response2 = await fetch('http://localhost:1337/api/platforms?populate=*', {
+      method: 'GET', 
+      headers: {'Accept': 'application/json', 'Content-Type':'application/json'}}
+    )
     const gamePlatforms = await response2.json()
-    this.setState({gamePlatforms:gamePlatforms})
 
-    const response3 = await fetch('http://localhost:1337/api/genres?sort[0]=name', {method: 'GET', headers: {'Accept': 'application/json', 'Content-Type':'application/json'}})
+    const response3 = await fetch('http://localhost:1337/api/genres?sort[0]=name', {
+      method: 'GET', 
+      headers: {'Accept': 'application/json', 'Content-Type':'application/json'}}
+    )
     const gameGenres = await response3.json()
-    this.setState({gameGenres:gameGenres})
 
     var temp = []
     temp = JSON.parse(localStorage.getItem('gamesInTheCart')) || [];
-    this.setState({gamesInTheCart: {...temp}});
+
+    this.setState({
+      gamesInTheCart: {...temp}, 
+      gameArticles:gameArticles, 
+      gamePlatforms:gamePlatforms, 
+      gameGenres:gameGenres});
   }
 
   render() {
     return (
       <Router>
         <Routes>
-          <Route exact path='/' element={<Home gamePlatforms={this.state.gamePlatforms} gameArticles={this.state.gameArticles.data} gameGenres={this.state.gameGenres.data} addGameInTheCart={this.addGameInTheCart} deleteGameFromTheCart={this.deleteGameFromTheCart}/>} />
-          <Route exact path='/game' element={<Game gameGenres={this.state.gameGenres.data} addGameInTheCart={this.addGameInTheCart} />} />
-          <Route exact path='/cart' element={<Cart gameGenres={this.state.gameGenres.data} deleteGameFromTheCart={this.deleteGameFromTheCart}/>} />
+          <Route exact path='/' element={<Home gamePlatforms={this.state.gamePlatforms.data} gameArticles={this.state.gameArticles.data} gameGenres={this.state.gameGenres.data} updateTheCart={this.updateTheCart}/>} />
+          <Route exact path='/game' element={<Game gameGenres={this.state.gameGenres.data} gamePlatforms={this.state.gamePlatforms.data} updateTheCart={this.updateTheCart} />} />
+          <Route exact path='/cart' element={<Cart updateTheCart={this.updateTheCart}/>} />
           <Route exact path='/about-us' element={<AboutUs />} />
           <Route exact path='/user' element={<User />} />
         </Routes>

@@ -17,7 +17,7 @@ class GameArticle extends Component {
     return (
       <Card className="shadow-sm p-3 mb-5 bg-body"> 
         <Link to={"/Game?ID="+this.props.gameArticle.id}>
-          <Card.Img className="fluid cardImg" variant="top" src={"http://localhost:1337"+this.props.gameArticle.attributes.cover.data.attributes.formats.medium.url} />
+          <Card.Img className="fluid cardImg" variant="top" src={"http://localhost:1337" + this.props.gameArticle.attributes.cover.data.attributes.formats.medium.url} />
           <Card.Title className="text-center">{this.props.gameArticle.attributes.title}</Card.Title>
         </Link>
         <Card.Footer>
@@ -25,8 +25,8 @@ class GameArticle extends Component {
             {
               this.props.gameArticle && this.props.gameArticle.attributes.platforms.data
               .map((platformGame,i)=> {
-                const platformItem = this.props.gamePlatforms.data.find(plat => plat.id===platformGame.id)
-                return <Col><img className='icon' src={"http://localhost:1337"+platformItem.attributes.icon.data.attributes.formats.thumbnail.url} /></Col>
+                const platformItem = this.props.gamePlatforms.find(plat => plat.id===platformGame.id)
+                return <Col key={i}><img className='icon' src={"http://localhost:1337" + platformItem.attributes.icon.data.attributes.formats.thumbnail.url} /></Col>
               })
             }
 
@@ -34,7 +34,7 @@ class GameArticle extends Component {
               <Button variant="outline-success" 
                 onMouseOver={()=>this.mouseHoverTrue()}
                 onMouseLeave={()=>this.mouseHoverFalse()}
-                onClick={()=>this.props.addGameInTheCart(this.props.gameArticle, this.props.gameArticle.attributes.price)}>
+                onClick={()=>this.props.updateTheCart(this.props.gameArticle, null, true)}>
                 {this.state.mouseHover ? "Ajouter" : this.props.gameArticle.attributes.price + " €"}
               </Button>
             </Col>

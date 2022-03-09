@@ -1,76 +1,58 @@
-import React, { Component } from 'react';
-import { Nav, Navbar, Container, Button, NavDropdown, Row, Col, Image, Form, FormControl } from 'react-bootstrap';
+import React from 'react';
+import { Nav, Navbar, Container, Button, NavDropdown, Row, Col, Image} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-class Menu extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-        }
-    }
+function Menu(props){
+    return (
+        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="sticky-top">
+            <Container>
+                <h1><Link to='/'>INDE-STORE</Link></h1>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                <Navbar.Collapse id="responsive-navbar-nav">
+                    <Nav className="me-auto">
+                        <Link to="/games">Jeux</Link>
+                        <Link to="/about-us">A propos de nous</Link>
+                    </Nav>
+                    <Nav>
+                        <NavDropdown title="Panier" id="collasible-nav-dropdown" menuVariant="dark" align="end" className='cart'>
+                            <NavDropdown.Header className='text-center'>Votre panier</NavDropdown.Header>
 
-    
-    render() {
+                            <NavDropdown.Divider/>
+                            <Container className='list-articles'>  {localStorage.getItem('gamesInTheCart') && JSON.parse(localStorage.getItem('gamesInTheCart')).map((game, i)=>
+                                <Row className='centered-alignment' key={i}>
+                                    <Col xs={2}>
+                                        <Button variant="outline-danger" size="sm" onClick={()=>props.updateTheCart(game, i, false)}>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-dash" viewBox="0 0 16 16">
+                                                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"></path>
+                                            </svg>
+                                        </Button>
+                                    </Col>
+                                    <Col xs={3}><Image className='fluid float-start' src={"http://localhost:1337" + game.attributes.cover.data.attributes.formats.thumbnail.url}/></Col>
+                                    <Col className="text-start"><span className='text-wrap'>{game.attributes.title}</span></Col> 
+                                    <Col xs={3} className=''><strong>{game.attributes.price + " €"}</strong></Col>
+                                    <div className='line'/>
+                                </Row>
+                            )}</Container>
+                          
 
-        return (
-            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="sticky-top">
-                <Container>
-                    <h1><Link to='/'>INDE-STORE</Link></h1>
-                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                    <Navbar.Collapse id="responsive-navbar-nav">
-                        <Nav className="me-auto">
-                            <Link to="/games">Jeux</Link>
-                            <NavDropdown title="Genres" id="collasible-nav-dropdown" menuVariant="dark" className='genres'>
-
-                                {this.props.gameGenres && this.props.gameGenres.map((gameGenre, i)=>
-                                    <NavDropdown.ItemText key={i}>
-                                        <Link to=''>{gameGenre.attributes.name}</Link>
-                                    </NavDropdown.ItemText>
-                                )}
-
-                            </NavDropdown>
-                            <Link to="/about-us">A propos de nous</Link>
-                        </Nav>
-                        <Nav>
-                            <NavDropdown title="Panier" id="collasible-nav-dropdown" menuVariant="dark" align="end" className='cart'>
-                                <NavDropdown.Header className='text-center'>Votre panier</NavDropdown.Header>
-
-                                <NavDropdown.Divider/>
-
-                                {localStorage.getItem('gamesInTheCart') && JSON.parse(localStorage.getItem('gamesInTheCart')).map((article, i)=>
-                                    <NavDropdown.Item key={i} as="button">
-                                        <Row className='game-info'>
-                                            <Col xs={2}>
-                                                <Button variant="danger" size="sm" onClick={()=>this.props.deleteGameFromTheCart(i, article.attributes.price)}>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
-                                                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"></path>
-                                                    </svg>
-                                                </Button>
-                                            </Col>
-                                            <Col xs={4}><Image className='fluid float-start' src={article && "http://localhost:1337"+article.attributes.cover.data.attributes.formats.thumbnail.url}/></Col>
-                                            <Col xs={4} className="text-start"><span className='text-wrap'>{article && article.attributes.title}</span></Col> 
-                                            <Col xs={2} className='text-end'><strong>{article && article.attributes.price + " €"}</strong></Col>
-                                        </Row>
-                                        <div className='line'></div>
-                                    </NavDropdown.Item>
-                                )}
-
-                                <NavDropdown.Divider/>
-
+                            <NavDropdown.Divider/>
+                            <div className=''>
                                 <NavDropdown.Header>
                                     <Row>
                                         <Col><span>Total :</span></Col>
                                         <Col><strong className='float-end'>{(localStorage.getItem('totalPrice') || "0,00") + " €"}</strong></Col>
                                     </Row>
                                 </NavDropdown.Header>
-                                <NavDropdown.Item as="button" className='text-center'><Link to="/cart">ALLER AU PANIER</Link></NavDropdown.Item>
-                            </NavDropdown>
-                        </Nav>
-                    </Navbar.Collapse>
-                </Container>
-            </Navbar>
-        );
-    }
+                                <div className='text-center'>
+                                    <Link to="/cart"><Button  size="sm" variant="light" style={{ width: '50%' }}>Aller au panier</Button></Link>
+                                </div>
+                            </div>
+                        </NavDropdown>
+                    </Nav>
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
+    );
 }
 
 export default Menu;
