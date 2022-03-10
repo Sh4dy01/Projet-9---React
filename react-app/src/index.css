@@ -304,12 +304,12 @@ p{
 
 .aboutUsCover{
   width: 100%;
-  min-height: 700px;
+  min-height: 30rem;
   background-color: #282c34;
 }
 
 .aboutUsCover h2{
-  padding-top: 140px;
+  padding-top: 3rem;
   font-size: 80px;
   color: white;
 }
@@ -320,6 +320,16 @@ p{
 }
 
 .us .card-title{
-  font-size: 110px;
   padding-top: 1em;
+  font-size: 50px;
+}
+
+.us img{
+  height: 30rem;
+  width: 30rem;
+}
+
+.cart-articles {
+  height: 35rem;
+  overflow-y: overlay;
 }

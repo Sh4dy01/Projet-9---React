@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Carousel, Row, Col, Button, Stack, Placeholder } from 'react-bootstrap';
+import { Container, Carousel, Row, Col, Button, Stack, Placeholder, Image } from 'react-bootstrap';
 
 import FooterComposant from '../components/Footer';
 import Menu from '../components/Menu';
@@ -58,7 +58,7 @@ class Game extends Component {
   render(){
     return (
       <div>
-        <img className='backgroundIMG' src={this.state.game.data && "http://localhost:1337"+this.state.game.data.attributes.cover.data.attributes.formats.large.url} />
+        <Image className='backgroundIMG' src={this.state.game.data && "http://localhost:1337"+this.state.game.data.attributes.cover.data.attributes.formats.large.url} />
         <Menu updateTheCart={this.props.updateTheCart}/>
         <Container>
           <Row>
@@ -71,7 +71,7 @@ class Game extends Component {
                   :
                   (this.state.game.data && this.state.game.data.attributes.media.data.map((media,i)=>
                   <Carousel.Item key={i}>
-                    <img
+                    <Image
                       className="d-block w-100"
                       src={"http://localhost:1337" + media.attributes.formats.large.url}
                       alt={"slide "+i}
@@ -121,7 +121,7 @@ class Game extends Component {
                   </Placeholder>)
                   :
                   (this.state.game.data && 
-                  <img className='cover' src={"http://localhost:1337" + this.state.game.data.attributes.cover.data.attributes.formats.small.url} alt="cover du jeu"/>)  
+                  <Image className='cover' src={"http://localhost:1337" + this.state.game.data.attributes.cover.data.attributes.formats.small.url} alt="cover du jeu"/>)  
                 }
                 
                 <Row className='centered-alignment'>
@@ -155,7 +155,7 @@ class Game extends Component {
                     this.state.loading ?
                       (<Placeholder className="iconPlaceholder" />)
                       :
-                      (<img className='icon' src={ this.state.developer.data && "http://localhost:1337"+this.state.developer.data[0].attributes.icon.data.attributes.formats.thumbnail.url }/>)
+                      (<Image className='icon' src={ this.state.developer.data && "http://localhost:1337"+this.state.developer.data[0].attributes.icon.data.attributes.formats.thumbnail.url }/>)
                     }
                   </Col>
                 </Row>
@@ -172,7 +172,7 @@ class Game extends Component {
                     this.state.loading ?
                       (<Placeholder className="iconPlaceholder" />)
                       :
-                      (<img className='icon text-start' src={ this.state.editor.data && "http://localhost:1337"+this.state.editor.data[0].attributes.icon.data.attributes.formats.thumbnail.url }/>)
+                      (<Image className='icon text-start' src={ this.state.editor.data && "http://localhost:1337"+this.state.editor.data[0].attributes.icon.data.attributes.formats.thumbnail.url }/>)
                     }
                   </Col>
                 </Row> 
@@ -188,7 +188,7 @@ class Game extends Component {
                       (this.state.game.data && this.state.game.data.attributes.platforms.data
                         .map((platformGame,i)=> {
                           const platformItem = this.props.gamePlatforms.find(plat => plat.id === platformGame.id)
-                          return <Col key={i}><img className='icon' src={"http://localhost:1337" + platformItem.attributes.icon.data.attributes.formats.thumbnail.url} /></Col>
+                          return <Col key={i}><Image className='icon' src={"http://localhost:1337" + platformItem.attributes.icon.data.attributes.formats.thumbnail.url} /></Col>
                         }))
                       
                     }

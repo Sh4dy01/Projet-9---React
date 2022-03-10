@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import {Card, Button, Row, Col} from 'react-bootstrap';
+import {Card, Button, Row, Col, Image} from 'react-bootstrap';
 import {Link} from 'react-router-dom'
 
 class GameArticle extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mouseHover:false
+      mouseHover:false,
     }
   }
 
@@ -28,7 +28,7 @@ class GameArticle extends Component {
                   this.props.gameArticle.attributes.platforms && this.props.gamePlatforms && this.props.gameArticle.attributes.platforms.data
                   .map((platformGame,i)=> {
                     const platformItem = this.props.gamePlatforms.find(plat => plat.id===platformGame.id)
-                    return <Col key={i} xs={2}><img className='icon' src={"http://localhost:1337" + platformItem.attributes.icon.data.attributes.formats.thumbnail.url} /></Col>
+                    return <Col key={i} xs={2}><Image className='icon' src={"http://localhost:1337" + platformItem.attributes.icon.data.attributes.formats.thumbnail.url} /></Col>
                   })
                 }
               </Row>

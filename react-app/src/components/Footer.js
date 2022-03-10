@@ -10,8 +10,8 @@ function FooterComposant(){
                     <Col xs={6} xl={3}>
                         <h5>À PROPOS DE</h5>
                         <ListGroup variant="flush">
-                            <ListGroup.Item>Développeur</ListGroup.Item>
-                            <ListGroup.Item>Support</ListGroup.Item>
+                            <ListGroup.Item><Link to='/about-us'>Développeur</Link></ListGroup.Item>
+                            <ListGroup.Item className='text-muted'>Support</ListGroup.Item>
                         </ListGroup>
                     </Col>
 
@@ -30,7 +30,7 @@ function FooterComposant(){
                     <Col>
                         <Form>
                             <Form.Group className="mb-3" controlId="formBasicEmail">
-                                <Form.Label><h5>Newsletter</h5></Form.Label>
+                                <Form.Label><h5>NEWSLETTER</h5></Form.Label>
                                 <Form.Control type="email" placeholder="Entrez votre e-mail" />
                                 <Form.Text className="text-muted">
                                     Nous ne partagerons pas votre e-mail.

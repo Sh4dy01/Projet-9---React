@@ -61,7 +61,7 @@ class Cart extends Component {
             <Col xs={12} xl={8}>
               <h2 className='text-center'>Panier</h2>
               <div className="line"></div>
-              <Container className='text-center'>
+              <Container className='text-center cart-articles'>
                 {localStorage.getItem('gamesInTheCart') && localStorage.getItem('gamesInTheCart').length > 0 && JSON.parse(localStorage.getItem('gamesInTheCart')).map((article, i)=>
                   <GameCart key={i} gameArticle={article} updateTheCart={this.props.updateTheCart} gameId={i}></GameCart>)
                 }

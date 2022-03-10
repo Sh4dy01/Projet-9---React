@@ -3,7 +3,7 @@ import GameArticle from '../components/GameArticle';
 import FooterComposant from '../components/Footer';
 
 import React, { Component } from 'react';
-import {Container, Row, Col, Form, InputGroup, FormControl, Button, Spinner} from 'react-bootstrap';
+import {Row, Col, Form, InputGroup, FormControl, Button, Spinner} from 'react-bootstrap';
 
 class Home extends Component {
   constructor(props) {
@@ -41,7 +41,7 @@ class Home extends Component {
       temp.push(e.target.value);
 
     }else{
-      let idToRemove = temp.findIndex(genre => genre == e.target.value);
+      let idToRemove = temp.findIndex(genre => genre === e.target.value);
       temp.splice(idToRemove, 1);
     }
 
