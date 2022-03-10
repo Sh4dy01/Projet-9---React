@@ -3,7 +3,7 @@ import GameArticle from '../components/GameArticle';
 import FooterComposant from '../components/Footer';
 
 import React, { Component } from 'react';
-import {Container, Row, Col, Form, InputGroup, FormControl, Button} from 'react-bootstrap';
+import {Container, Row, Col, Form, InputGroup, FormControl, Button, Spinner} from 'react-bootstrap';
 
 class Home extends Component {
   constructor(props) {
@@ -13,6 +13,7 @@ class Home extends Component {
       search: "",
       genresFilter: [],
       filteredGames: [],
+      loading:true
     }
   }
 
@@ -71,7 +72,8 @@ class Home extends Component {
       const filteredGames = await response.json();
 
       this.setState({
-        filteredGames: filteredGames.data});
+        filteredGames: filteredGames.data,
+      loading:false});
     }
   } 
 
@@ -115,18 +117,23 @@ class Home extends Component {
           </Col>
           <Col>
             <div className="shadow p-3 bg-body">
-              <Row>
-                {this.state.filteredGames && this.state.filteredGames
-                  .filter(gameArticle => gameArticle.attributes.title.toLowerCase().includes(this.state.search.toLowerCase()))
-                  .map((gameArticle, i) =>
-                  <Col xs={12} md={6} xl={3} key={i}>
-                    <GameArticle 
-                      gamePlatforms={this.props.gamePlatforms}  
-                      gameArticle={gameArticle} 
-                      updateTheCart={this.props.updateTheCart}
-                    />
-                  </Col>
-                )}
+              <Row className={this.state.loading ? ('case justify-content-md-center') : ('case')}>
+                {
+                this.state.loading ?
+                  (<Col xs={1} className="spin" ><Spinner animation="border" size="lg" /></Col>)
+                  :
+                  (this.state.filteredGames && this.state.filteredGames
+                    .filter(gameArticle => gameArticle.attributes.title.toLowerCase().includes(this.state.search.toLowerCase()))
+                    .map((gameArticle, i) =>
+                    <Col xs={12} md={6} xl={3} key={i}>
+                      <GameArticle 
+                        gamePlatforms={this.props.gamePlatforms}  
+                        gameArticle={gameArticle} 
+                        updateTheCart={this.props.updateTheCart}
+                      />
+                    </Col>
+                  ))
+                }
               </Row>
             </div>
           </Col>

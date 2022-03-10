@@ -293,3 +293,11 @@ p{
   height: 45px;
   width: 45px;
 }
+.case{
+ width: 100%;
+ min-height: 1000px;
+}
+
+.spin{
+  padding-top: 45vh;
+}
