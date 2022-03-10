@@ -301,3 +301,25 @@ p{
 .spin{
   padding-top: 45vh;
 }
+
+.aboutUsCover{
+  width: 100%;
+  min-height: 700px;
+  background-color: #282c34;
+}
+
+.aboutUsCover h2{
+  padding-top: 140px;
+  font-size: 80px;
+  color: white;
+}
+
+.us{
+  margin: 70px;
+  padding: 5px;
+}
+
+.us .card-title{
+  font-size: 110px;
+  padding-top: 1em;
+}

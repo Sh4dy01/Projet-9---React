@@ -117,7 +117,7 @@ class Home extends Component {
           </Col>
           <Col>
             <div className="shadow p-3 bg-body">
-              <Row className={this.state.loading ? ('case justify-content-md-center') : ('case')}>
+            <Row className={this.state.loading ? ('case justify-content-md-center') : ('case')}>
                 {
                 this.state.loading ?
                   (<Col xs={1} className="spin" ><Spinner animation="border" size="lg" /></Col>)
