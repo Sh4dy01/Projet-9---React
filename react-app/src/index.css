@@ -271,3 +271,21 @@ p{
 .space{
   padding-left: 30px;
 }
+
+.placeholder{
+  margin: 30px;
+
+}
+
+.imgPlaceholder{
+  height: 45vh;
+}
+
+.coverPlaceholder{
+  height: 230px;
+}
+
+.iconPlaceholder{
+  height: 45px;
+  width: 45px;
+}
