@@ -11,9 +11,12 @@ class Home extends Component {
     this.state = {
       showMenu: false,
       search: "",
+      sort: "launched_date",
+      order: "desc",
       genresFilter: [],
       filteredGames: [],
-      loading:true
+      loading:true,
+      topGames: []
     }
   }
 
@@ -21,19 +24,23 @@ class Home extends Component {
     this.setState({showMenu: !this.state.showMenu});
   }
   
-  handleChange = (e) => {
-    e.preventDefault()
+  handleSearchChange = (e) => {
+    e.preventDefault();
     let name = e.target.name
     this.setState({
         [name]: e.target.value
     })
   }
 
-  componentDidMount = async() => {
-    this.getFilteredGames()
+  handleSortAndOrderChange = (e) => {   
+    e.preventDefault();
+    let name = e.target.name;
+    this.setState({
+      [name]: e.target.value
+    },()=>this.getFilteredGames())
   }
 
-  handleGenreChanges = (e) => {
+  handleGenreChange = (e) => {
     let isChecked = e.target.checked;
     let temp = this.state.genresFilter;
     
@@ -52,30 +59,41 @@ class Home extends Component {
 
   getFilteredGames = async() =>{
     const listOfIdGenres = this.state.genresFilter;
-
-    if (!listOfIdGenres) {
-      this.setState({
-        filteredGames: this.props.gameArticles});
-        
-    } else {
       
-      let filter = "";
-      
-      listOfIdGenres.forEach((genreId,i) => {
-        filter += "filters[$and][" + i + "][genres][id][$eq]=" + genreId + "&"
-      });
+    let filter = "";
+    
+    listOfIdGenres.forEach((genreId,i) => {
+      filter += "filters[$and][" + i + "][genres][id][$eq]=" + genreId + "&"
+    });
 
-      const response = await fetch("http://localhost:1337/api/games?sort[0]=launched_date%3Adesc&" + filter + "populate=*", {
-        method: 'GET', 
-        headers: {'Accept': 'application/json', 'Content-Type':'application/json'}}
-      )
-      const filteredGames = await response.json();
+    const response = await fetch("http://localhost:1337/api/games?sort[0]=" + this.state.sort + "%3A" + this.state.order + "&" + filter + "populate=*", {
+      method: 'GET', 
+      headers: {'Accept': 'application/json', 'Content-Type':'application/json'}}
+    )
+    const filteredGames = await response.json();
+
+    this.setState({
+      filteredGames: filteredGames.data,
+      loading:false
+    });
+  }
+
+  componentDidMount = async() => {
+    await this.getFilteredGames();
+
+    let topGames = [];
+    let temp = this.state.filteredGames;
+
+    if (temp != null) {
+      for (let i = 0; i < 5; i++) { 
+        topGames.push(temp[i]);
+      }
 
       this.setState({
-        filteredGames: filteredGames.data,
-      loading:false});
+        topGames: topGames
+      })
     }
-  } 
+  }
 
   render() {
     return (
@@ -94,11 +112,32 @@ class Home extends Component {
                     key={i}
                     value={gameGenre.id}
                     label={gameGenre.attributes.name}
-                    onClick={e => this.handleGenreChanges(e)}
+                    onClick={e => this.handleGenreChange(e)}
                   />
                 )}
-                <Form.Select aria-label="Default select example">
-                </Form.Select>
+                <h3 className='border-bottom text-center'>Trie</h3>
+                <Row>
+                  <Col>
+                    <Form.Select 
+                      aria-label="Default select example" 
+                      name="sort" 
+                      onChange={e => this.handleSortAndOrderChange(e)}>
+                        <option value='launched_date'>Date de sortie</option>
+                        <option value='sold'>Meilleurs ventes</option>
+                        <option value='title'>Nom</option>
+                        <option value='price'>Prix</option>
+                    </Form.Select>
+                  </Col>
+                  <Col>
+                    <Form.Select 
+                      aria-label="Default select example" 
+                      name="order" 
+                      onChange={e => this.handleSortAndOrderChange(e)}>
+                        <option value='desc'>Descendant</option>
+                        <option value='asc'>Ascendant</option>
+                    </Form.Select>
+                  </Col>
+                </Row>
               </div>
               <div>
                 <h3 className='border-bottom text-center'>Recherche par nom</h3>
@@ -109,7 +148,7 @@ class Home extends Component {
                     aria-describedby="inputGroup-sizing-sm" 
                     name="search" 
                     value={this.state.name} 
-                    onChange={(e) => this.handleChange(e)}
+                    onChange={(e) => this.handleSearchChange(e)}
                   />
                 </InputGroup>
               </div>
@@ -138,7 +177,7 @@ class Home extends Component {
             </div>
           </Col>
         </Row>
-        <FooterComposant/>
+        <FooterComposant topGames={this.state.topGames}/>
       </>
     );
   }

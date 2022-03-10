@@ -49,7 +49,6 @@ class App extends Component{
   }
 
   componentDidMount = async () => {
-
     const response2 = await fetch('http://localhost:1337/api/platforms?populate=*', {
       method: 'GET', 
       headers: {'Accept': 'application/json', 'Content-Type':'application/json'}}
@@ -67,8 +66,9 @@ class App extends Component{
 
     this.setState({
       gamesInTheCart: {...temp}, 
-      gamePlatforms:gamePlatforms, 
-      gameGenres:gameGenres});
+      gamePlatforms: gamePlatforms, 
+      gameGenres: gameGenres,
+    });
   }
 
   render() {

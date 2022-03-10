@@ -123,7 +123,7 @@ class Game extends Component {
                 </Row>
                 <Stack gap={2} className="col-md-8 mx-auto">
                   <Button variant="secondary" onClick={()=>this.props.updateTheCart(this.state.game.data, null, true)}>Ajouter au panier</Button>
-                  <Button className='officialsite' variant="secondary" href={this.state.game.data && this.state.game.data.attributes.link} >Site Officiel</Button>
+                  <Button className='officialsite' variant="secondary" href={this.state.game.data && this.state.game.data.attributes.link} target="_blank">Site Officiel</Button>
                 </Stack>
                 <div className='line'></div>
                 <Row className='centered-alignment'>

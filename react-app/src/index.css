@@ -26,6 +26,11 @@ h3 {
   color: black;
 }
 
+.list-group a{
+  text-decoration: none;
+  color: black;
+}
+
 .line{
   background-color: #aaaaaa;
   height: 1px;
@@ -63,6 +68,10 @@ h3 {
   text-align: center;
   padding: 0 15px;
   margin: auto;
+}
+
+.list-articles a{
+  padding: 0;
 }
 
 .navbar-collapse a:hover{

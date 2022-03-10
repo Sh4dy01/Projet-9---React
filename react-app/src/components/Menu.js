@@ -10,7 +10,7 @@ function Menu(props) {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav>
-                        <Link to="/games">Jeux</Link>
+                        <Link to="/">Jeux</Link>
                         <Link to="/about-us">A propos de nous</Link>
                     </Nav>
                     <Nav>
@@ -27,7 +27,7 @@ function Menu(props) {
                                             </svg>
                                         </Button>
                                     </Col>
-                                    <Col xs={3}><Image className='fluid float-start' src={"http://localhost:1337" + game.attributes.cover.data.attributes.formats.thumbnail.url}/></Col>
+                                    <Col xs={3}><Link to={"/Game?ID=" + game.id}><Image className='fluid float-start' src={"http://localhost:1337" + game.attributes.cover.data.attributes.formats.thumbnail.url}/></Link></Col>
                                     <Col className="text-start"><span className='text-wrap'>{game.attributes.title}</span></Col> 
                                     <Col xs={3} className=''><strong>{game.attributes.price + " €"}</strong></Col>
                                     <div className='line'/>
