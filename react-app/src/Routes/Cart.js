@@ -7,6 +7,8 @@ import Menu from '../components/Menu';
 import GameCart from '../components/GameCart';
 import FooterComposant from '../components/Footer';
 
+
+
 function Cart(props){
   return (
     <div>
@@ -14,7 +16,7 @@ function Cart(props){
       
       <Container className='bg-dark cart-page'>
         <Row>
-          <Col xl={8}>
+          <Col xs={12} xl={8}>
             <h2 className='text-center'>Votre panier</h2>
             <div className="line"></div>
             <Container>

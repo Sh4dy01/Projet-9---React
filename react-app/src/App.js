@@ -46,7 +46,9 @@ class App extends Component{
     localStorage.setItem('gamesInTheCart', JSON.stringify(temp));
     localStorage.setItem('totalPrice', totalPrice);
 
-    this.setState({gamesInTheCart: {...temp}});
+    this.setState({
+      gamesInTheCart: {...temp},
+    });
   }
 
   componentDidMount = async () => {

@@ -1,5 +1,8 @@
 import { Component } from 'react';
 
+import {Spinner, Container} from 'react-bootstrap';
+
+
 class SendCommand extends Component {
     constructor(props) {
         super(props);
@@ -76,6 +79,17 @@ class SendCommand extends Component {
         })
 
         await this.props.history.push('/')
+    }
+
+    render(){
+        return(
+            <Container className='text-center'>
+                <h2>Envoie de la commande, veuillez patienter</h2>
+                <Spinner animation="border" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </Spinner>
+            </Container>
+        )
     }
 }
 

@@ -3,7 +3,6 @@ import GameArticle from '../components/GameArticle';
 import FooterComposant from '../components/Footer';
 
 import React, { Component } from 'react';
-import { Transition } from 'react-transition-group';
 import {Container, Row, Col, Form, InputGroup, FormControl, Button} from 'react-bootstrap';
 
 class Home extends Component {
@@ -65,7 +64,7 @@ class Home extends Component {
         filter += "filters[$and][" + i + "][genres][id][$eq]=" + genreId + "&"
       });
 
-      const response = await fetch("http://localhost:1337/api/games?" + filter + "populate=*", {
+      const response = await fetch("http://localhost:1337/api/games?sort[0]=launched_date%3Adesc&" + filter + "populate=*", {
         method: 'GET', 
         headers: {'Accept': 'application/json', 'Content-Type':'application/json'}}
       )
@@ -77,12 +76,11 @@ class Home extends Component {
   } 
 
   render() {
-    console.log(this.state.showMenu == true);
     return (
       <>
         <Menu updateTheCart={this.props.updateTheCart}></Menu>
         <Row>
-          <Col xs={2} className='filter text-center'>
+          <Col xs={2} className='filter text-center d-none d-sm-block d-sm-none d-md-block'>
           <Button onClick={this.toggleMenu} variant="dark" size="sm" className='my-2'>Filtrer</Button>
           {this.state.showMenu &&
             <div className="float-start mx-auto ms-3 p-2 bg-light rounded">

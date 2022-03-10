@@ -14,7 +14,7 @@ function GameCart(props) {
             </Col>
             <Col>
                 <Row className="centered-alignment">
-                    <Col xl={2}>
+                    <Col xs={3}>
                         <Link to={"/Game?ID=" + props.gameArticle.id}>
                             <Image className='fluid rounded' src={"http://localhost:1337" + props.gameArticle.attributes.cover.data.attributes.formats.small.url}></Image>
                         </Link>
@@ -24,8 +24,8 @@ function GameCart(props) {
                             <h3 className='text-start'>{props.gameArticle.attributes.title}</h3>
                         </Link>
                         <Row className='platform-selection'>
-                            <Col xl={4}>
-                                <span>Plateforme : </span>
+                            <Col xs={12} md={4}>
+                                <span>Plateforme: </span>
                             </Col>
                             <Col>
                                 <Form.Select aria-label="Default select example">
@@ -35,7 +35,7 @@ function GameCart(props) {
                             </Col>
                         </Row>
                     </Col>
-                    <Col xs={2}><strong className='float-end'>{props.gameArticle.attributes.price + " €"}</strong></Col>
+                    <Col xs={3}><strong className='float-end'>{props.gameArticle.attributes.price + " €"}</strong></Col>
                 </Row>
             </Col>
             <div className='line'></div>
