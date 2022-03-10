@@ -2,7 +2,7 @@ import React from 'react';
 import { Nav, Navbar, Container, Button, NavDropdown, Row, Col, Image} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-function Menu(props){
+function Menu(props) {
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="sticky-top">
             <Container>
@@ -33,7 +33,7 @@ function Menu(props){
                                     <div className='line'/>
                                 </Row>
                             )}</Container>
-                          
+                            
 
                             <NavDropdown.Divider/>
                             <div className=''>

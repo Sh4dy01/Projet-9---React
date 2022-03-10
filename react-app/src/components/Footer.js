@@ -7,7 +7,7 @@ function FooterComposant(){
         <footer className="shadow bg-body border-top">
             <Container>
                 <Row>
-                    <Col xl={3}>
+                    <Col xs={6} xl={3}>
                         <h5>À PROPOS DE</h5>
                         <ListGroup variant="flush">
                             <ListGroup.Item>Développeur</ListGroup.Item>
@@ -15,7 +15,7 @@ function FooterComposant(){
                         </ListGroup>
                     </Col>
 
-                    <Col xl={5}>
+                    <Col xs={6} xl={5}>
                         <h5>MEILLEURES VENTES</h5>
                         <ListGroup variant="flush">
                             {/* Map sur 5 jeux les plus vendus*/}
@@ -41,7 +41,7 @@ function FooterComposant(){
                     </Col>
                 </Row>
                 <div className="d-flex justify-content-between border-top">
-                    <p>© 2022 Company, Inc. Tout droits réservés.</p>
+                    <h6>© 2022 Inde-Store Company, Inc. Tout droits réservés.</h6>
                 </div>
             </Container>
         </footer>

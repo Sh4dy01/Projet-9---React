@@ -23,7 +23,7 @@ function Cart(props){
               )}
             </Container>
           </Col>
-          <Col className='sticky-top'>
+          <Col>
             <h2 className='text-center'>Votre total</h2>
             <div className="line"></div>
             <Row>

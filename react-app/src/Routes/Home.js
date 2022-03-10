@@ -3,17 +3,22 @@ import GameArticle from '../components/GameArticle';
 import FooterComposant from '../components/Footer';
 
 import React, { Component } from 'react';
+import { Transition } from 'react-transition-group';
 import {Container, Row, Col, Form, InputGroup, FormControl, Button} from 'react-bootstrap';
 
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      showMenu: true,
       search: "",
       genresFilter: [],
       filteredGames: [],
-      changed: false
     }
+  }
+
+  toggleMenu = () => {
+    this.setState({showMenu: !this.state.showMenu});
   }
   
   handleChange = (e) => {
@@ -24,11 +29,11 @@ class Home extends Component {
     })
   }
 
-  async componentDidMount(){
+  componentDidMount = async() => {
     this.getFilteredGames()
   }
 
-  handleGenreChanges(e) {
+  handleGenreChanges = (e) => {
     let isChecked = e.target.checked;
     let temp = this.state.genresFilter;
     
@@ -45,7 +50,7 @@ class Home extends Component {
     },()=>this.getFilteredGames())
   }
 
-  getFilteredGames = async () =>{
+  getFilteredGames = async() =>{
     const listOfIdGenres = this.state.genresFilter;
 
     if (!listOfIdGenres) {
@@ -72,12 +77,15 @@ class Home extends Component {
   } 
 
   render() {
+    console.log(this.state.showMenu == true);
     return (
       <>
         <Menu updateTheCart={this.props.updateTheCart}></Menu>
         <Row>
-          <Col xs={2}>
-            <Container className="filter">
+          <Col xs={2} className='filter text-center'>
+          <Button onClick={this.toggleMenu} variant="dark" size="sm" className='my-2'>Filtrer</Button>
+          {this.state.showMenu &&
+            <div className="float-start mx-auto ms-3 p-2 bg-light rounded">
               <div>
                 <h3 className='border-bottom text-center'>Recherche par catégorie</h3>
                 {this.props.gameGenres && this.props.gameGenres.map((gameGenre, i)=>
@@ -105,15 +113,16 @@ class Home extends Component {
                   />
                 </InputGroup>
               </div>
-            </Container>
+            </div>}
           </Col>
-          <Col xs={10}>
-            <div className="shadow p-3 bg-body me-5">
+          <Col>
+            <h2 className='text-center'>JEUX</h2>
+            <div className="shadow p-3 bg-body">
               <Row>
                 {this.state.filteredGames && this.state.filteredGames
                   .filter(gameArticle => gameArticle.attributes.title.toLowerCase().includes(this.state.search.toLowerCase()))
                   .map((gameArticle, i) =>
-                  <Col xs={12} md={6} xl={4} xxl={3} key={i}>
+                  <Col xs={12} md={6} xl={3} key={i}>
                     <GameArticle 
                       gamePlatforms={this.props.gamePlatforms}  
                       gameArticle={gameArticle} 
