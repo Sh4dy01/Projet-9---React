@@ -1,9 +1,9 @@
+import React, { Component } from 'react';
+import {Row, Col, Form, InputGroup, FormControl, Button, Spinner} from 'react-bootstrap';
+
 import Menu from '../components/Menu';
 import GameArticle from '../components/GameArticle';
 import FooterComposant from '../components/Footer';
-
-import React, { Component } from 'react';
-import {Row, Col, Form, InputGroup, FormControl, Button, Spinner} from 'react-bootstrap';
 
 class Home extends Component {
   constructor(props) {

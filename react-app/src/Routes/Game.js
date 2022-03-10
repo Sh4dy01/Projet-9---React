@@ -17,13 +17,6 @@ class Game extends Component {
     }
   }
 
-  // <Container className='text-center'>
-//               <h2>Envoie de la commande, veuillez patienter...</h2>
-//               <Spinner animation="border" role="status">
-//                   <span className="visually-hidden">Loading...</span>
-//               </Spinner>
-//           </Container>
-
   componentDidMount = async () => {
     const queryString = await window.location.search;
     const urlParams = await new URLSearchParams(queryString);

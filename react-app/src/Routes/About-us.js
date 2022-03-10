@@ -1,6 +1,7 @@
 import React from 'react';
-import Menu from '../components/Menu';
 import {Container, Row, Card, Col} from 'react-bootstrap';
+
+import Menu from '../components/Menu';
 import FooterComposant from '../components/Footer';
 
 function AboutUs(){
