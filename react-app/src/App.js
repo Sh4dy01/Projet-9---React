@@ -19,10 +19,10 @@ class App extends Component{
   constructor(props){
     super(props)
     this.state={
-      gameArticles: [],
       gamePlatforms: [],
       gameGenres: [],
       gamesInTheCart: [],
+      cartCount: 0,
     }
   }
 
@@ -48,15 +48,11 @@ class App extends Component{
 
     this.setState({
       gamesInTheCart: {...temp},
+      cartCount: temp.length,
     });
   }
 
   componentDidMount = async () => {
-    const response = await fetch('http://localhost:1337/api/games?sort[0]=launched_date%3Adesc&populate=*', {
-      method: 'GET', 
-      headers: {'Accept': 'application/json', 'Content-Type':'application/json'}}
-    )
-    const gameArticles = await response.json()
 
     const response2 = await fetch('http://localhost:1337/api/platforms?populate=*', {
       method: 'GET', 
@@ -75,7 +71,6 @@ class App extends Component{
 
     this.setState({
       gamesInTheCart: {...temp}, 
-      gameArticles:gameArticles, 
       gamePlatforms:gamePlatforms, 
       gameGenres:gameGenres});
   }
@@ -84,9 +79,9 @@ class App extends Component{
     return (
       <Router>
         <Routes>
-          <Route exact path='/' element={<Home gamePlatforms={this.state.gamePlatforms.data} gameArticles={this.state.gameArticles.data} gameGenres={this.state.gameGenres.data} updateTheCart={this.updateTheCart}/>} />
+          <Route exact path='/' element={<Home gamePlatforms={this.state.gamePlatforms.data} gameGenres={this.state.gameGenres.data} updateTheCart={this.updateTheCart}/>} />
           <Route exact path='/game' element={<Game gameGenres={this.state.gameGenres.data} gamePlatforms={this.state.gamePlatforms.data} updateTheCart={this.updateTheCart} />} />
-          <Route exact path='/cart' element={<Cart updateTheCart={this.updateTheCart}/>} />
+          <Route exact path='/cart' element={<Cart updateTheCart={this.updateTheCart} cartCount={this.state.cartCount}/>} />
           <Route exact path='/sendcommand' element={<SendCommand commandData={localStorage.getItem('gamesInTheCart') && JSON.parse(localStorage.getItem('gamesInTheCart'))}/>}/>
           <Route exact path='/about-us' element={<AboutUs />} />
           <Route exact path='/user' element={<User />} />

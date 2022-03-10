@@ -9,11 +9,11 @@ function Menu(props) {
                 <h1><Link to='/'>INDE-STORE</Link></h1>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
-                    <Nav className="">
+                    <Nav>
                         <Link to="/games">Jeux</Link>
                         <Link to="/about-us">A propos de nous</Link>
                     </Nav>
-                    <Nav className='float-end'>
+                    <Nav>
                         <NavDropdown title={ "Panier: " + ((localStorage.getItem('gamesInTheCart') && JSON.parse(localStorage.getItem('gamesInTheCart')).length) || "0")} id="collasible-nav-dropdown" menuVariant="dark" align="end" className='cart'>
                             <NavDropdown.Header className='text-center'>Votre panier</NavDropdown.Header>
 

@@ -9,7 +9,7 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showMenu: true,
+      showMenu: false,
       search: "",
       genresFilter: [],
       filteredGames: [],
@@ -81,7 +81,7 @@ class Home extends Component {
         <Menu updateTheCart={this.props.updateTheCart}></Menu>
         <Row>
           <Col xs={2} className='filter text-center d-none d-sm-block d-sm-none d-md-block'>
-          <Button onClick={this.toggleMenu} variant="dark" size="sm" className='my-2'>Filtrer</Button>
+          <Button onClick={this.toggleMenu} variant="dark" size="sm" className='my-2'>Afficher filtres</Button>
           {this.state.showMenu &&
             <div className="float-start mx-auto ms-3 p-2 bg-light rounded">
               <div>
@@ -114,7 +114,6 @@ class Home extends Component {
             </div>}
           </Col>
           <Col>
-            <h2 className='text-center'>JEUX</h2>
             <div className="shadow p-3 bg-body">
               <Row>
                 {this.state.filteredGames && this.state.filteredGames

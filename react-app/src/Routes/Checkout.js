@@ -72,6 +72,8 @@ class SendCommand extends Component {
     //     ]
 
     componentDidMount = async ()=> {
+        console.log(this.props.commandData);
+        
         await fetch('http://localhost:1337/api/commandes', {
             method: 'POST', 
             headers: {'Accept': 'application/json', 'Content-Type':'application/json'},
@@ -84,7 +86,7 @@ class SendCommand extends Component {
     render(){
         return(
             <Container className='text-center'>
-                <h2>Envoie de la commande, veuillez patienter</h2>
+                <h2>Envoie de la commande, veuillez patienter...</h2>
                 <Spinner animation="border" role="status">
                     <span className="visually-hidden">Loading...</span>
                 </Spinner>

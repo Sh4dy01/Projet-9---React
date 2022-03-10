@@ -218,6 +218,10 @@ h3 {
   color: white;
 }
 
+.cart-page {
+  min-height: 25rem;
+}
+
 .cart-page .line {
   margin-top: 15px;
   margin-bottom: 15px;
