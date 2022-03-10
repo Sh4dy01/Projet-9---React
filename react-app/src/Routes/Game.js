@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Carousel, Row, Col, Button, Stack, Placeholder } from 'react-bootstrap';
+
 import FooterComposant from '../components/Footer';
 import Menu from '../components/Menu';
 import ReactMarkdown from 'react-markdown'
@@ -15,6 +16,13 @@ class Game extends Component {
       loading:true
     }
   }
+
+  // <Container className='text-center'>
+//               <h2>Envoie de la commande, veuillez patienter...</h2>
+//               <Spinner animation="border" role="status">
+//                   <span className="visually-hidden">Loading...</span>
+//               </Spinner>
+//           </Container>
 
   componentDidMount = async () => {
     const queryString = await window.location.search;

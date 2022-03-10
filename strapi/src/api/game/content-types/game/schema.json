@@ -85,12 +85,6 @@
       "type": "integer",
       "default": 0,
       "required": false
-    },
-    "commande": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::commande.commande",
-      "inversedBy": "games"
     }
   }
 }
