@@ -12,29 +12,20 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "games": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::game.game",
-      "mappedBy": "commande"
-    },
-    "date": {
-      "type": "datetime",
-      "required": true
-    },
     "total": {
       "type": "decimal",
-      "required": true
-    },
-    "users_permissions_user": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "commandes"
+      "required": true,
+      "min": 1
     },
     "numberOfArticles": {
       "type": "integer",
-      "required": true
+      "required": true,
+      "min": 1
+    },
+    "games": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::game.game"
     }
   }
 }
